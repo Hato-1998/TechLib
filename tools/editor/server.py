@@ -19,7 +19,9 @@ from __future__ import annotations
 
 import http.server
 import json
+import re
 import socketserver
+import subprocess
 import sys
 import threading
 import time
@@ -86,6 +88,111 @@ def list_tree() -> list[dict]:
                         files.append({"name": sname, "path": spath})
         result.append({"section": name, "files": files})
     return result
+
+
+# ============================================================
+# Git 헬퍼
+# ============================================================
+
+def git_run(args: list[str], timeout: int = 60) -> tuple[int, str, str]:
+    """git 명령 실행. (returncode, stdout, stderr) 반환."""
+    try:
+        p = subprocess.run(
+            ["git"] + args,
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+        )
+        return p.returncode, p.stdout or "", p.stderr or ""
+    except FileNotFoundError:
+        return -1, "", "git 실행 파일을 찾을 수 없습니다."
+    except subprocess.TimeoutExpired:
+        return -1, "", f"git 명령 타임아웃 ({timeout}s)"
+
+
+def git_status() -> dict:
+    """git status --porcelain -b 파싱."""
+    if not (ROOT / ".git").exists():
+        return {"git_repo": False, "error": "프로젝트가 git 저장소가 아닙니다."}
+    rc, out, err = git_run(["status", "--porcelain", "-b"])
+    if rc != 0:
+        return {"git_repo": True, "error": err or out}
+
+    lines = out.split("\n")
+    branch_line = lines[0] if lines else ""
+
+    # "## main...origin/main [ahead 2]" 또는 "## main"
+    m = re.match(r"##\s+(\S+?)(?:\.\.\.\S+(?:\s+\[(.+?)\])?)?\s*$", branch_line)
+    branch = m.group(1) if m else "?"
+    info = m.group(2) if (m and m.group(2)) else ""
+
+    changed = []
+    untracked = []
+    for ln in lines[1:]:
+        if not ln.strip():
+            continue
+        st = ln[:2]
+        path = ln[3:].strip()
+        if st == "??":
+            untracked.append(path)
+        else:
+            changed.append({"status": st.strip(), "path": path})
+
+    ahead_m = re.search(r"ahead\s+(\d+)", info)
+    behind_m = re.search(r"behind\s+(\d+)", info)
+    ahead = int(ahead_m.group(1)) if ahead_m else 0
+    behind = int(behind_m.group(1)) if behind_m else 0
+
+    return {
+        "git_repo": True,
+        "branch": branch,
+        "changed": changed,
+        "untracked": untracked,
+        "ahead": ahead,
+        "behind": behind,
+        "dirty": (len(changed) + len(untracked)) > 0,
+    }
+
+
+def git_deploy(message: str) -> dict:
+    """git add -A + commit + push. 변경이 없어도 ahead 커밋이 있으면 push만."""
+    if not (ROOT / ".git").exists():
+        return {"error": "프로젝트가 git 저장소가 아닙니다."}
+
+    logs = []
+
+    # 1. stage all
+    rc, out, err = git_run(["add", "-A"])
+    logs.append(f"git add -A → rc={rc}")
+    if rc != 0:
+        return {"error": "git add 실패", "log": (err or out)}
+
+    # 2. commit (변경 없으면 skip)
+    committed = False
+    rc, out, err = git_run(["commit", "-m", message])
+    combined = (out or "") + (err or "")
+    logs.append(f"git commit → rc={rc}")
+    if rc == 0:
+        committed = True
+    elif "nothing to commit" in combined or "no changes added" in combined:
+        committed = False
+    else:
+        return {"error": "git commit 실패", "log": combined}
+
+    # 3. push
+    rc, out, err = git_run(["push"], timeout=120)
+    logs.append(f"git push → rc={rc}")
+    if rc != 0:
+        return {"error": "git push 실패", "log": (err or out), "committed": committed}
+
+    return {
+        "ok": True,
+        "committed": committed,
+        "log": "\n".join(logs) + "\n\n" + (out or "") + (err or ""),
+    }
 
 
 # ============================================================
@@ -165,6 +272,9 @@ class EditorHandler(http.server.BaseHTTPRequestHandler):
                     ]
                 })
 
+            if path == "/api/git/status":
+                return self._send_json(git_status())
+
             self.send_error(404)
         except Exception as e:
             self._send_json({"error": str(e), "trace": traceback.format_exc()}, 500)
@@ -184,6 +294,13 @@ class EditorHandler(http.server.BaseHTTPRequestHandler):
                 full.parent.mkdir(parents=True, exist_ok=True)
                 full.write_text(content, encoding="utf-8")
                 return self._send_json({"ok": True, "bytes": len(content.encode("utf-8"))})
+
+            if path == "/api/git/deploy":
+                body = self._read_json()
+                msg = (body.get("message") or "").strip() or "docs: update via wiki editor"
+                result = git_deploy(msg)
+                status = 200 if result.get("ok") else 500
+                return self._send_json(result, status)
 
             if path == "/api/page":
                 body = self._read_json()

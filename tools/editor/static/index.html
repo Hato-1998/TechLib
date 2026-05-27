@@ -24,7 +24,8 @@
     <h1>TechLib 위키 편집기</h1>
     <div class="actions">
         <button id="btn-new" title="새 페이지 추가">+ 새 페이지</button>
-        <button id="btn-save" disabled title="Ctrl+S">저장</button>
+        <button id="btn-save" disabled title="Ctrl+S로 로컬 저장">저장</button>
+        <button id="btn-deploy" title="git push로 GitHub 배포">배포 <span id="deploy-count" class="badge"></span></button>
         <span id="status" class="status">파일을 선택하세요</span>
     </div>
 </header>
@@ -87,6 +88,39 @@
             <button id="btn-create" class="btn-primary">생성 후 편집</button>
         </div>
         <div id="new-error" class="error-msg" hidden></div>
+    </div>
+</div>
+
+<!-- 배포 모달 -->
+<div id="deploy-modal" class="modal" hidden>
+    <div class="modal-content">
+        <h2>GitHub에 배포</h2>
+        <p class="modal-help">
+            로컬 변경사항을 GitHub에 푸시합니다. GitHub Actions가 자동으로 사이트를 재빌드해
+            1~2분 뒤에 라이브 사이트에 반영됩니다.
+        </p>
+
+        <div id="deploy-status" class="deploy-status">상태 확인 중…</div>
+        <div id="deploy-files-wrap" hidden>
+            <details>
+                <summary id="deploy-files-summary">변경된 파일</summary>
+                <ul id="deploy-files" class="file-changes"></ul>
+            </details>
+        </div>
+
+        <label>
+            커밋 메시지
+            <input id="deploy-message" type="text" value="docs: update via wiki editor">
+        </label>
+
+        <div class="modal-actions">
+            <button id="btn-deploy-cancel" class="btn-secondary">취소</button>
+            <button id="btn-deploy-confirm" class="btn-primary">push (배포)</button>
+        </div>
+
+        <div id="deploy-progress" class="info-msg" hidden>배포 중… 잠시만 기다려주세요.</div>
+        <div id="deploy-error" class="error-msg" hidden></div>
+        <div id="deploy-success" class="success-msg" hidden></div>
     </div>
 </div>
 

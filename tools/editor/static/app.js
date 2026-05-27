@@ -335,8 +335,156 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================================
+// Git status 폴링 + 배포 모달
+// ============================================================
+
+const btnDeploy = $('btn-deploy');
+const deployCount = $('deploy-count');
+const deployModal = $('deploy-modal');
+const deployStatus = $('deploy-status');
+const deployFilesWrap = $('deploy-files-wrap');
+const deployFiles = $('deploy-files');
+const deployFilesSummary = $('deploy-files-summary');
+const deployMessage = $('deploy-message');
+const deployProgress = $('deploy-progress');
+const deployError = $('deploy-error');
+const deploySuccess = $('deploy-success');
+const btnDeployCancel = $('btn-deploy-cancel');
+const btnDeployConfirm = $('btn-deploy-confirm');
+
+async function refreshGitStatus() {
+    try {
+        const r = await fetch('/api/git/status');
+        const data = await r.json();
+        if (!data.git_repo || data.error) {
+            deployCount.textContent = '';
+            btnDeploy.title = 'git 저장소가 아니거나 오류: ' + (data.error || '');
+            return data;
+        }
+        const total = (data.changed || []).length + (data.untracked || []).length + (data.ahead || 0);
+        deployCount.textContent = total > 0 ? String(total) : '';
+        btnDeploy.title = total > 0
+            ? `미배포 변경 ${total}건. 클릭하여 push.`
+            : '변경사항 없음';
+        return data;
+    } catch (e) {
+        deployCount.textContent = '';
+        return { error: e.message };
+    }
+}
+
+btnDeploy.addEventListener('click', async () => {
+    deployError.hidden = true;
+    deploySuccess.hidden = true;
+    deployProgress.hidden = true;
+    btnDeployConfirm.disabled = false;
+    deployFilesWrap.hidden = true;
+
+    deployStatus.className = 'deploy-status';
+    deployStatus.textContent = '상태 확인 중…';
+    deployModal.hidden = false;
+
+    const data = await refreshGitStatus();
+    if (data.error) {
+        deployStatus.className = 'deploy-status';
+        deployStatus.textContent = '오류: ' + data.error;
+        btnDeployConfirm.disabled = true;
+        return;
+    }
+
+    const changed = data.changed || [];
+    const untracked = data.untracked || [];
+    const ahead = data.ahead || 0;
+    const total = changed.length + untracked.length + ahead;
+
+    if (total === 0) {
+        deployStatus.className = 'deploy-status clean';
+        deployStatus.textContent = `변경사항 없음 (${data.branch})`;
+        btnDeployConfirm.disabled = true;
+        return;
+    }
+
+    deployStatus.className = 'deploy-status dirty';
+    const parts = [];
+    if (changed.length) parts.push(`수정 ${changed.length}`);
+    if (untracked.length) parts.push(`신규 ${untracked.length}`);
+    if (ahead) parts.push(`미푸시 커밋 ${ahead}`);
+    deployStatus.textContent = `${data.branch}: ${parts.join(' · ')}`;
+
+    deployFiles.innerHTML = '';
+    for (const f of changed) {
+        const li = document.createElement('li');
+        li.textContent = `[${f.status || ' M'}] ${f.path}`;
+        deployFiles.appendChild(li);
+    }
+    for (const p of untracked) {
+        const li = document.createElement('li');
+        li.textContent = `[??] ${p}`;
+        deployFiles.appendChild(li);
+    }
+    deployFilesSummary.textContent = `변경된 파일 (${changed.length + untracked.length})`;
+    deployFilesWrap.hidden = (changed.length + untracked.length) === 0;
+});
+
+btnDeployCancel.addEventListener('click', () => { deployModal.hidden = true; });
+
+deployModal.addEventListener('click', (e) => {
+    if (e.target === deployModal) deployModal.hidden = true;
+});
+
+btnDeployConfirm.addEventListener('click', async () => {
+    const msg = deployMessage.value.trim() || 'docs: update via wiki editor';
+    deployError.hidden = true;
+    deploySuccess.hidden = true;
+    deployProgress.hidden = false;
+    btnDeployConfirm.disabled = true;
+
+    try {
+        const r = await fetch('/api/git/deploy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: msg }),
+        });
+        const data = await r.json();
+        deployProgress.hidden = true;
+        if (!r.ok || data.error) {
+            deployError.textContent = (data.error || '실패') + (data.log ? '\n\n' + data.log : '');
+            deployError.hidden = false;
+            btnDeployConfirm.disabled = false;
+            return;
+        }
+        deploySuccess.innerHTML = (data.committed ? '커밋 + push 완료. ' : 'push 완료 (새 커밋 없음). ') +
+            'GitHub Actions가 사이트를 재빌드합니다 (보통 30초~2분).<br>' +
+            '<a href="https://hato-1998.github.io/TechLib/" target="_blank">사이트 열기</a> · ' +
+            '<a href="https://github.com/Hato-1998/TechLib/actions" target="_blank">Actions 진행 상황</a>';
+        deploySuccess.hidden = false;
+        await refreshGitStatus();
+        // Auto close after 5s
+        setTimeout(() => { deployModal.hidden = true; }, 5000);
+    } catch (e) {
+        deployProgress.hidden = true;
+        deployError.textContent = '오류: ' + e.message;
+        deployError.hidden = false;
+        btnDeployConfirm.disabled = false;
+    }
+});
+
+// 저장 후 status 갱신
+const originalSave = saveFile;
+saveFile = async function() {
+    await originalSave();
+    refreshGitStatus();
+};
+btnSave.removeEventListener('click', originalSave);
+btnSave.addEventListener('click', saveFile);
+
+// 30초마다 자동 폴링
+setInterval(refreshGitStatus, 30000);
+
+// ============================================================
 // 초기 로드
 // ============================================================
 
 loadTree();
 updateStats();
+refreshGitStatus();
