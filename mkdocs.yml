@@ -1,0 +1,117 @@
+site_name: TechLib — 게임 프로그래밍 기술 위키
+site_description: 게임 프로그래머를 위한 자료구조·수학·메모리·렌더링·네트워크 기술 정리
+site_author: san9640
+docs_dir: docs
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로 전환
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+
+nav:
+  - 홈: index.md
+  - 1. 자료구조:
+      - 개요: 01-data-structures/index.md
+      - Tree & Graph: 01-data-structures/tree-graph.md
+      - 공간 분할(트리 분할): 01-data-structures/space-partitioning.md
+      - 충돌 연산: 01-data-structures/collision.md
+      - 길찾기 알고리즘: 01-data-structures/pathfinding.md
+  - 2. 선형대수학:
+      - 개요: 02-linear-algebra/index.md
+      - 행렬 변환: 02-linear-algebra/matrix-transform.md
+      - 내적·외적: 02-linear-algebra/dot-cross-product.md
+      - 시야각 & 백페이스 컬링: 02-linear-algebra/frustum-culling.md
+  - 3. 캐시 메모리: 03-cache-memory/index.md
+  - 4. 컴퓨터 아키텍처:
+      - 개요: 04-computer-architecture/index.md
+      - Draw Call: 04-computer-architecture/draw-call.md
+      - 병목 현상 최소화: 04-computer-architecture/bottleneck.md
+      - 배경 최적화: 04-computer-architecture/environment-optimization.md
+  - 5. 스레드 & 동기화:
+      - 개요: 05-threading/index.md
+      - 멀티스레딩 기초: 05-threading/multi-threading.md
+      - 메인/렌더/물리 분리: 05-threading/render-physics-split.md
+      - 병렬 처리: 05-threading/parallel-processing.md
+  - 6. 동적 할당 & 단편화: 06-memory-allocation/index.md
+  - 7. OS 스케줄링: 07-os-scheduling/index.md
+  - 8. 메모리 관리 & 심리스 로딩: 08-memory-management/index.md
+  - 9. 네트워크 동기화:
+      - 개요: 09-network-sync/index.md
+      - 클라이언트 예측: 09-network-sync/client-prediction.md
+      - 추측 항법(Dead Reckoning): 09-network-sync/dead-reckoning.md
+  - 10. 프로파일링 & 최적화 도구: 10-profiling/index.md
+  - 11. 물리·렌더링 심화:
+      - 개요: 11-advanced-rendering/index.md
+      - 물리 엔진 심화: 11-advanced-rendering/physics-engine.md
+      - PBR: 11-advanced-rendering/pbr.md
+      - WFC 알고리즘: 11-advanced-rendering/wfc.md
+  - 12. OOP vs DOD/ECS: 12-oop-vs-dod-ecs/index.md
+  - 시니어 지식 (5년차+):
+      - 개요: senior-knowledge/index.md
+      - 디버깅 마인드셋: senior-knowledge/debugging-mindset.md
+      - 코드 리뷰 관점: senior-knowledge/code-review.md
+      - 게임 디자인 패턴: senior-knowledge/design-patterns.md
+      - Git & 협업 워크플로우: senior-knowledge/git-workflow.md
+      - 최신 트렌드 2026: senior-knowledge/tech-trends-2026.md
