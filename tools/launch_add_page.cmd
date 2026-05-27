@@ -1,9 +1,12 @@
 @echo off
-REM TechLib 페이지 추가 도구 런처
-REM 바탕화면 바로가기에서 이 파일을 호출.
+REM TechLib page-add launcher. Launched by the desktop shortcut.
+REM All comments/messages kept in ASCII so cmd parses correctly regardless of
+REM file encoding. Korean output from the Python script works because we set
+REM chcp 65001 + PYTHONIOENCODING below.
 
 chcp 65001 >nul
-title TechLib 페이지 추가 도구
+set PYTHONIOENCODING=utf-8
+title TechLib Page Adder
 
 cd /d "%~dp0.."
 
@@ -12,10 +15,10 @@ set EXITCODE=%ERRORLEVEL%
 
 echo.
 echo ============================================
-if %EXITCODE% EQU 0 (
-    echo  완료. 아무 키나 누르면 창이 닫힙니다.
+if "%EXITCODE%"=="0" (
+    echo  Done. Press any key to close.
 ) else (
-    echo  오류 코드 %EXITCODE%. 메시지를 확인 후 닫으세요.
+    echo  Exit code %EXITCODE%. Check messages, then press any key.
 )
 echo ============================================
 pause >nul
