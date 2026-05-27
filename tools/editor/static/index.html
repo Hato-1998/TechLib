@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechLib 위키 편집기</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@8/dist/markdownItAnchor.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it-task-lists@2/dist/markdown-it-task-lists.min.js"></script>
+
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/index.min.js"></script>
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>TechLib 위키 편집기</h1>
+    <div class="actions">
+        <button id="btn-new" title="새 페이지 추가">+ 새 페이지</button>
+        <button id="btn-save" disabled title="Ctrl+S">저장</button>
+        <span id="status" class="status">파일을 선택하세요</span>
+    </div>
+</header>
+
+<main>
+    <aside id="sidebar">
+        <div class="sidebar-header">파일 목록</div>
+        <div id="tree" class="tree">로딩 중…</div>
+    </aside>
+
+    <section id="editor-pane" class="pane">
+        <div class="pane-header">
+            <span>편집</span>
+            <div class="toolbar">
+                <button class="tool-btn" data-action="todo" title="TODO 주석 삽입">TODO</button>
+                <button class="tool-btn" data-action="note" title="비공개 메모 (HTML 주석)">메모</button>
+                <button class="tool-btn" data-action="code" title="C++ 코드 블록">코드</button>
+                <button class="tool-btn" data-action="table" title="3x2 표">표</button>
+                <button class="tool-btn" data-action="mermaid" title="Mermaid 다이어그램">Mermaid</button>
+                <button class="tool-btn" data-action="link" title="내부 페이지 링크">링크</button>
+            </div>
+        </div>
+        <textarea id="editor" spellcheck="false" placeholder="파일을 선택하거나 + 새 페이지로 시작하세요."></textarea>
+        <div class="pane-footer" id="editor-stats">0줄 · 0자</div>
+    </section>
+
+    <section id="preview-pane" class="pane">
+        <div class="pane-header">
+            <span>미리보기</span>
+            <div class="preview-controls">
+                <label class="toggle"><input type="checkbox" id="sync-scroll" checked> 스크롤 동기화</label>
+            </div>
+        </div>
+        <div id="preview" class="markdown-body"><em class="hint">편집을 시작하면 여기에 미리보기가 표시됩니다.</em></div>
+    </section>
+</main>
+
+<!-- 새 페이지 모달 -->
+<div id="new-modal" class="modal" hidden>
+    <div class="modal-content">
+        <h2>새 페이지 추가</h2>
+        <label>
+            섹션
+            <select id="new-section"></select>
+        </label>
+        <label>
+            제목 (한국어)
+            <input id="new-title" type="text" placeholder="예: 해시 테이블">
+        </label>
+        <label>
+            영문 슬러그 (파일명)
+            <input id="new-slug" type="text" placeholder="예: hash-table">
+        </label>
+        <label>
+            한 줄 요약 (섹션 인덱스 표용)
+            <input id="new-summary" type="text" placeholder="예: O(1) 평균 조회, 충돌 해결">
+        </label>
+        <div class="modal-actions">
+            <button id="btn-cancel" class="btn-secondary">취소</button>
+            <button id="btn-create" class="btn-primary">생성 후 편집</button>
+        </div>
+        <div id="new-error" class="error-msg" hidden></div>
+    </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
