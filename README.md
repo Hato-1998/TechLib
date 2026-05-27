@@ -1,5 +1,11 @@
 # TechLib — 게임 프로그래밍 기술 위키
 
+[![Live Site](https://img.shields.io/badge/site-live-brightgreen)](https://hato-1998.github.io/TechLib/)
+[![Deploy](https://github.com/Hato-1998/TechLib/actions/workflows/deploy.yml/badge.svg)](https://github.com/Hato-1998/TechLib/actions/workflows/deploy.yml)
+[![MkDocs Material](https://img.shields.io/badge/built%20with-mkdocs--material-526CFE)](https://squidfunk.github.io/mkdocs-material/)
+
+> **사이트:** <https://hato-1998.github.io/TechLib/>
+
 게임 프로그래머를 위한 자료구조·수학·메모리·렌더링·네트워크 기술 정리.
 입문자부터 5년차 이상까지 참고할 수 있는 핵심 개념·면접 포인트·실무 트렌드를 정리한 개인 위키.
 
