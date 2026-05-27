@@ -1182,17 +1182,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -1201,7 +1190,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2231,17 +2220,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -2250,7 +2228,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2359,20 +2337,12 @@
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>stat rhi
 </span></code></pre></div>
 <p><code>Mesh draw calls</code> 행을 본다.</p>
-<h2 id="_6">면접/실무 포인트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 드로우콜이 비싼 본질적 이유는? — API 호출보다 <strong>state 전환과 드라이버 검증</strong>이 크다. 같은 머티리얼이면 batching이 가능한 이유.</li>
-<li><strong>Q2</strong>: Nanite가 모든 메시에 답인가? — 정적 메시·내부 deforming 없는 경우에 최적. 투명/half-transparent, WPO 변형, 일부 머티리얼은 fallback. UE5.5에서 스켈레탈 Nanite 도입되며 범위 확장.</li>
-<li><strong>Q3</strong>: ISM vs HISM 선택? — 적은 수면 ISM, 수천+ 멀리까지 보이면 HISM(LOD·컬링 자동).</li>
-<li><strong>Q4</strong>: DX12에서 드로우콜이 DX11보다 저렴한 이유? — 명령 버퍼를 미리 여러 스레드에서 작성, 드라이버 검증 감소. 하지만 PSO 관리·메모리 명시는 개발자 몫.</li>
-<li><strong>Q5</strong>: Material Slot 수를 줄이는 게 왜 드로우콜에 영향? — 슬롯마다 별도 머티리얼 → 슬롯별 드로우콜. 슬롯 통합 + Material Function으로 분기.</li>
-</ul>
-<h2 id="_7">안티패턴<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">안티패턴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>BP에서 매 Tick <code>SpawnActor</code>로 이펙트 생성 → 매 프레임 새 컴포넌트, 드로우콜 폭증</li>
 <li>Material Editor에서 머티리얼 인스턴스 대신 새 머티리얼 복제 → PSO 캐시 무효화</li>
 </ul>
-<h2 id="_8">심화 학습<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">심화 학습<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Pipeline State Object (PSO) 캐싱 전략</li>
 <li>GPU-driven rendering (indirect draw, mesh shader)</li>

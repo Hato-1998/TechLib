@@ -2017,17 +2017,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접 빈출 주제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴 미리보기
       
     </span>
@@ -2036,7 +2025,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습 키워드
@@ -2146,19 +2135,13 @@
 </tbody>
 </table>
 <p><strong>가장 좋은 락은 락이 없는 것</strong> — 데이터를 분리할 수 있으면 우선 분리.</p>
-<h2 id="_5">면접 빈출 주제<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>"race condition을 어떻게 디버깅?" → 재현성 확보(deterministic seed, replay), TSan</li>
-<li>"Game Thread에서 무거운 일을 Worker로 옮길 때 위험은?" → UObject 접근 규칙, GC와의 충돌</li>
-<li>"deadlock 진단법?" → 락 획득 순서 통일, 디버거 스레드별 콜스택, deadlock detector</li>
-</ul>
-<h2 id="_6">안티패턴 미리보기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">안티패턴 미리보기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>"동기화 빠지면 락부터" — 종종 atomic이면 충분하거나 데이터 분리로 락 자체 회피 가능</li>
 <li>"ParallelFor에서 같은 컨테이너 push_back" — race, false sharing 동시 발생</li>
 <li>Game Thread에서 무거운 IO/네트워크 → 메인 스레드 정지</li>
 </ul>
-<h2 id="_7">심화 학습 키워드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">심화 학습 키워드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Memory ordering (acquire, release, seq_cst)</li>
 <li>Hazard pointer, RCU</li>

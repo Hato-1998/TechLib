@@ -1609,17 +1609,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2196,17 +2185,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2469,30 +2447,7 @@
 </span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="_5">면접/실무 포인트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 외삽이 실패할 수 있는 상황은?</li>
-<li>플레이어가 갑자기 방향 전환 (속도 변화 없는 가속도).</li>
-<li>스킬 사용으로 위치 변경 (텔포트).</li>
-<li>물리 이벤트 (낙하, 충돌).</li>
-<li>
-<p>→ 조정 필요.</p>
-</li>
-<li>
-<p><strong>Q2</strong>: 보간 지연을 줄이려면?</p>
-</li>
-<li>TickRate 증가 (20→60Hz), 네트워크 비용↑.</li>
-<li>부분 외삽 혼합.</li>
-<li>
-<p>클라 예측 (자신의 입력은 로컬 처리).</p>
-</li>
-<li>
-<p><strong>Q3</strong>: 회전(Rotation)은 어떻게 동기화할까?</p>
-</li>
-<li>위치와 동일: 외삽 후 Slerp(구면 보간) 조정.</li>
-<li>앵귤러 속도 전송하면 더 부드러움.</li>
-</ul>
-<h2 id="_6">심화 학습<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">심화 학습<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Lag-Compensated Movement, Angular Interpolation (Slerp/Quaternion)</li>
 <li>Unreal: <code>FMath::Lerp</code>, <code>FQuat::Slerp</code>, <code>FVector::Lerp</code></li>

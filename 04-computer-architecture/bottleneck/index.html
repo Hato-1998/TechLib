@@ -1221,17 +1221,6 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -1240,7 +1229,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2253,17 +2242,6 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -2272,7 +2250,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2426,21 +2404,13 @@
 </tbody>
 </table>
 <p>자세한 사용법은 <a href="../../10-profiling/">프로파일링 &amp; 최적화 도구</a>.</p>
-<h2 id="_7">면접/실무 포인트<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: Game Thread가 병목일 때 BP → C++ 전환이 답인가? — BP 자체보다 <strong>Tick 빈도와 알고리즘 복잡도</strong>가 더 큰 요인. BP가 핫패스에 있으면 C++ 이전 효과 있음.</li>
-<li><strong>Q2</strong>: GPU bound에서 해상도를 낮추는 게 항상 정답? — pixel bound면 효과 큼, vertex bound면 거의 무효. 먼저 어느 쪽인지 확인.</li>
-<li><strong>Q3</strong>: Multi-thread Render Thread (Parallel Rendering) 효과? — DX12/Vulkan에서 command buffer를 여러 스레드가 동시 작성. Render Thread 단일 코어 병목 완화.</li>
-<li><strong>Q4</strong>: Overdraw가 뭐고 어떻게 측정? — 같은 픽셀을 여러 번 그리는 비용. RenderDoc, ViewMode <code>ShaderComplexity</code>로 시각화. 반투명 폴리지·파티클이 주범.</li>
-<li><strong>Q5</strong>: VSync가 켜진 상태에서의 측정 함정? — 실제 비용보다 좋게 보임(상한이 16.6ms). 측정 시 VSync 끄거나 unlocked framerate.</li>
-</ul>
-<h2 id="_8">안티패턴<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">안티패턴<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>"최적화 책 읽고 모든 곳에 inline·SIMD" — 측정 없이 한 변화는 회귀</li>
 <li>"느리니까 백엔드를 갈아엎자" — 정작 병목은 한 함수의 잘못된 알고리즘</li>
 <li><code>stat unit</code> 한 번 보고 결론 — 입력·상황(전투 중, 도시 한가운데)에 따라 병목 달라짐. 여러 시나리오 측정 필요</li>
 </ul>
-<h2 id="_9">심화 학습<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_8">심화 학습<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Top-down performance analysis (Intel)</li>
 <li>Frame Pacing, Variable Refresh Rate</li>

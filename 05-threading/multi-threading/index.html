@@ -1381,17 +1381,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -1400,7 +1389,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2297,17 +2286,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -2316,7 +2294,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2456,21 +2434,13 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Queue</span><span class="p">.</span><span class="n">Dequeue</span><span class="p">(</span><span class="n">C</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 처리 */</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
 <p>여러 producer면 <code>EQueueMode::Mpsc</code>. lock-free 큐는 메모리 ordering 내부 처리.</p>
-<h2 id="_5">면접/실무 포인트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: <code>Counter++</code>가 race인 이유? — load/add/store 3단계. 그 사이 다른 스레드 끼어들면 손실.</li>
-<li><strong>Q2</strong>: <code>std::atomic&lt;int&gt;</code> 만 쓰면 lock-free 보장? — 플랫폼/타입 따라 다름. <code>is_lock_free()</code> 확인. 8/16/32/64bit 정수는 대부분 lock-free.</li>
-<li><strong>Q3</strong>: 스핀락 vs 뮤텍스 선택 기준? — 임계구간이 매우 짧고 컨텐션 낮으면 스핀락. 긴 구간이면 뮤텍스(컨텍스트 스위치 비용 &lt; 대기 비용).</li>
-<li><strong>Q4</strong>: deadlock을 컴파일 타임에 막을 수 있나? — 락 순서를 타입 시스템으로 강제(예: <code>std::scoped_lock</code> + 두 락 동시 획득). 또는 코드 리뷰·동적 검사.</li>
-<li><strong>Q5</strong>: TSAN (ThreadSanitizer)의 동작 원리? — 모든 메모리 접근에 happens-before 그래프 추적. race 시 보고. Debug 빌드에서 사용, 릴리스에선 비용 너무 큼.</li>
-</ul>
-<h2 id="_6">안티패턴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">안티패턴<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>락 안에서 또 다른 함수 호출 → 내부에서 같은 락 시도하면 deadlock (재귀 락 아닌 한)</li>
 <li><code>volatile</code>로 동기화 시도 → C++에서 volatile은 동기화 의미 아님. atomic 써야 함</li>
 <li>"그냥 락 한 번 더 잡으면 되겠지" — 디버깅 가능한 코드가 못 됨</li>
 </ul>
-<h2 id="_7">심화 학습<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">심화 학습<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Happens-before, sequenced-before</li>
 <li>Compare-And-Swap (CAS)</li>

@@ -1768,17 +1768,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2240,17 +2229,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2468,28 +2446,7 @@
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">// Substepping 설정 (프레임 더 세분화)</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">Comp</span><span class="o">-&gt;</span><span class="n">SetPhysicsMaxAngularVelocity</span><span class="p">(</span><span class="mf">1000.0f</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
 </span></code></pre></div>
-<h2 id="_8">면접/실무 포인트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: PhysX vs Chaos, 어떤 게 나을까?</li>
-<li>Chaos: UE5 기본, 더 나은 성능, 게임 친화적.</li>
-<li>
-<p>PhysX: 레거시 지원, 외부 프로젝트와 호환.</p>
-</li>
-<li>
-<p><strong>Q2</strong>: 물리 시뮬레이션이 프레임을 먹는다?</p>
-</li>
-<li>Actor 개수 감소 (Pool 사용).</li>
-<li>Collision complexity 낮춤 (Simple → Complex).</li>
-<li>
-<p>Tick 빈도 감소 (고정 rate 시뮬레이션).</p>
-</li>
-<li>
-<p><strong>Q3</strong>: 고속 총알이 벽을 통과한다?</p>
-</li>
-<li>CCD 활성화.</li>
-<li>Mesh collision 복잡도 확인.</li>
-</ul>
-<h2 id="_9">심화 학습<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_8">심화 학습<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Constraint Graphs, Island Management, Broad-Phase Collision</li>
 <li>Unreal: <code>FPhysicsCommand</code>, <code>FPhysScene</code></li>

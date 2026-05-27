@@ -1873,17 +1873,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2271,17 +2260,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2564,27 +2542,7 @@
     Small --&gt; OOP["OOP 충분&lt;br/&gt;개발 속도 우선"]
     Mid --&gt; Hybrid["OOP + DOD 하이브리드&lt;br/&gt;핫패스만 SoA"]
     Large --&gt; ECS["ECS 또는 순수 DOD&lt;br/&gt;Mass / DOTS"]</code></pre>
-<h2 id="_5">면접/실무 포인트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: "우리 게임이 10K 엔티티에서 프레임 드롭"?</li>
-<li>OOP라면 → ECS/DOD로 마이그레이션 고려.</li>
-<li>
-<p>가상 함수 호출 주범일 가능성 높음.</p>
-</li>
-<li>
-<p><strong>Q2</strong>: OOP 상속 vs ECS 조합, 어느 게 더 모듈화?</p>
-</li>
-<li>작은 기능: OOP.</li>
-<li>
-<p>조합 많음: ECS (깊은 상속 피함).</p>
-</li>
-<li>
-<p><strong>Q3</strong>: "DOD로 짜니 버그가 많다"?</p>
-</li>
-<li>데이터와 로직 분산 → 추적 어려움.</li>
-<li>테스트 커버리지↑, 타입 시스템↑ (Rust 추천).</li>
-</ul>
-<h2 id="_6">심화 학습<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">심화 학습<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Cache Locality, SIMD Optimization, Type Erasure</li>
 <li>Unreal: <code>FVector</code> SIMD 구현, <code>FObjectIterator</code> vs 커스텀 루프</li>

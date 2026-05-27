@@ -1067,17 +1067,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2320,17 +2309,6 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2442,15 +2420,7 @@
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FQuat</span><span class="p">(</span><span class="n">Axis</span><span class="p">,</span><span class="w"> </span><span class="n">Angle</span><span class="p">);</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="_8">면접/실무 포인트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 내적이 음수면 무엇을 의미? — 두 벡터 각이 90°보다 크다. 시야 밖, 또는 면이 카메라 반대편.</li>
-<li><strong>Q2</strong>: 외적의 결과 벡터 방향은 어떻게 결정? — 오른손 법칙 (또는 좌표계 따라 왼손). 정점 순서를 바꾸면 법선이 뒤집힌다.</li>
-<li><strong>Q3</strong>: <code>acos</code> 없이 각도 비교를 어떻게? — 정규화한 벡터의 내적을 <code>cos(임계각)</code>과 직접 비교. trig 함수 호출 회피.</li>
-<li><strong>Q4</strong>: 2D 게임에서 외적이 의미 있나? — z 성분 부호만 본다 (좌/우 판정, 폴리곤 winding).</li>
-<li><strong>Q5</strong>: 라이팅에서 <code>max(0, N·L)</code>은 왜? — 빛이 표면 뒤에서 오면 음수가 나오는데, 음의 밝기가 없으므로 0으로 클램프.</li>
-</ul>
-<h2 id="_9">심화 학습<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_8">심화 학습<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
 <li>그램-슈미트 직교화</li>
 <li>외적의 일반화 (Wedge product, 외대수)</li>

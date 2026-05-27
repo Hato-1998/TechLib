@@ -1999,17 +1999,6 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2252,17 +2241,6 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2368,15 +2346,14 @@
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1">// [AVOID]</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">AGameMode</span><span class="o">::</span><span class="n">OnPlayerDead</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Player</span><span class="p">);</span><span class="w">  </span><span class="c1">// 강한 결합</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1">// Lyra 패턴 3: Feature Plugins로 기능 분리</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// [GOOD]</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">// /Plugins/MyFeature/</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1">//   Source/MyFeature/</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1">//   MyFeature.uplugin</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// [AVOID]</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="c1">// Source/MyGame/Features/MyFeature/  // 모노리식</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">// Lyra 패턴 3: Feature Plugins로 기능 분리</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1">// [GOOD]</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// /Plugins/MyFeature/</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">//   Source/MyFeature/</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1">//   MyFeature.uplugin</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="c1">// [AVOID]</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// Source/MyGame/Features/MyFeature/  // 모노리식</span>
 </span></code></pre></div>
 <h2 id="_5">네트워크 동기화 리뷰 포인트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// [BAD] 클라가 직접 자신의 상태 변경</span>
@@ -2465,27 +2442,7 @@
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  - 보안 우려 (서버 검증 누락)
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>  - 명백한 버그
 </span></code></pre></div>
-<h2 id="_9">면접/실무 포인트<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 리뷰에서 성능 지적할 때 근거는?</li>
-<li>추측 금지. 측정 또는 문헌 인용.</li>
-<li>
-<p>"1M 반복에서 malloc 호출 → 10ms 오버헤드" (구체적).</p>
-</li>
-<li>
-<p><strong>Q2</strong>: 리뷰 코멘트 너무 많으면?</p>
-</li>
-<li>핵심 3개만. 나머지는 "nice-to-have".</li>
-<li>
-<p>"개선하면 좋겠지만 blocking은 아니다" 표시.</p>
-</li>
-<li>
-<p><strong>Q3</strong>: 작성자가 반박하면?</p>
-</li>
-<li>토론 환영. 근거 있으면 입장 변경 (열린 자세).</li>
-<li>"맞다, 내가 놓쳤다" — 시니어일수록 빨리 인정.</li>
-</ul>
-<h2 id="_10">심화 학습<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_9">심화 학습<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Constructive Feedback, Code Quality Metrics, Pull Request Best Practices</li>
 <li>Unreal: Lyra Learning Sample 코드 분석</li>

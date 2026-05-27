@@ -884,17 +884,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2230,17 +2219,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2370,15 +2348,7 @@
 <li><strong>RVO (Reciprocal Velocity Obstacles)</strong> — NPC끼리 동적 회피</li>
 <li><strong>Detour Crowd</strong> — Recast의 동적 군중 회피 모듈</li>
 </ul>
-<h2 id="_6">면접/실무 포인트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 휴리스틱이 admissible하지 않으면? — 최적 경로 보장 안 됨(과대평가 시 일찍 종료). 게임에서는 약간 과대평가해 속도-품질 트레이드.</li>
-<li><strong>Q2</strong>: NPC 5,000마리 동시 길찾기를 어떻게 처리? — 매 프레임 분산(time-slicing), HPA*로 거시 경로 캐시, 동일 목표는 flow field 공유.</li>
-<li><strong>Q3</strong>: Navmesh vs Grid 선택 기준? — 자유로운 3D 지형이면 Navmesh, 일정한 셀 단위(타워디펜스, 보드게임)면 Grid.</li>
-<li><strong>Q4</strong>: A* 우선순위 큐 구현은? — 이진 힙이 일반적. Fibonacci heap은 이론적 우위지만 상수 커서 게임에선 거의 안 씀.</li>
-<li><strong>Q5</strong>: 경로 스무딩이 필요한 이유? — Navmesh 다각형 중심을 잇는 경로는 지그재그. <strong>Funnel algorithm</strong>으로 string-pulling 후 시각적 자연스러움 확보.</li>
-</ul>
-<h2 id="_7">심화 학습<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">심화 학습<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>D* Lite (변화하는 그래프에서의 재탐색)</li>
 <li>Flow Field Pathfinding (RTS, 다수 유닛 동일 목표)</li>

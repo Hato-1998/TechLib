@@ -1448,17 +1448,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -1467,7 +1456,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2319,17 +2308,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         안티패턴
       
     </span>
@@ -2338,7 +2316,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2472,21 +2450,13 @@
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Buckets</span><span class="p">)</span><span class="w"> </span><span class="n">Results</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
 </span></code></pre></div>
-<h2 id="_6">면접/실무 포인트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: ParallelFor가 항상 빨라지지 않는 이유? — 잡 크기가 너무 작거나 메모리 액세스 패턴이 캐시 미스 유발이면 단일 스레드보다 느릴 수 있음.</li>
-<li><strong>Q2</strong>: Work stealing이 단순 라운드로빈보다 나은 점? — 잡 크기가 불균등할 때 자동 균등화. 짧은 잡 워커가 긴 잡 워커 큐를 도와줌.</li>
-<li><strong>Q3</strong>: Burst Compiler가 빠른 이유? — IL2CPP 대비 더 공격적 LLVM 최적화 + SIMD intrinsic 자동 생성. ECS의 SoA가 burst와 시너지.</li>
-<li><strong>Q4</strong>: Task Graph DAG가 깊으면 어떤 문제? — 직렬 경로 길어져 병렬도↓. 의존성 줄여 wide DAG로 만든다.</li>
-<li><strong>Q5</strong>: GPU compute로 보낼지, CPU 병렬로 풀지 기준? — 데이터가 크고 동질적 계산이면 GPU(transfer 비용 회수 가능). 적은 데이터·다양한 분기면 CPU.</li>
-</ul>
-<h2 id="_7">안티패턴<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">안티패턴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>ParallelFor 안에서 락 사용 — 병렬도 무효화</li>
 <li>한 워커 잡이 자기보다 큰 동기 잡을 기다림 → 데드락 위험</li>
 <li>잡 안에서 새 잡을 만들어 wait — 재귀적 wait 패턴 주의</li>
 </ul>
-<h2 id="_8">심화 학습<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">심화 학습<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Cilk-style work stealing 원리</li>
 <li>Coroutines로 잡 시스템 단순화 (C++20)</li>

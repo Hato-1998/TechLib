@@ -2077,17 +2077,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2294,17 +2283,6 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         심화 학습
@@ -2553,28 +2531,7 @@
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>→ 리뷰어 판단 용이
 </span></code></pre></div>
-<h2 id="_4">면접/실무 포인트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: 대규모 팀(50명+), 어떤 워크플로우?</li>
-<li>Trunk-based + 강한 CI/CD.</li>
-<li>
-<p>또는 Perforce (중앙집중형).</p>
-</li>
-<li>
-<p><strong>Q2</strong>: Git LFS 프로젝트, clone이 느려진다?</p>
-</li>
-<li>Shallow clone 고려.</li>
-<li>
-<p>부분 LFS 다운로드: <code>git lfs install --skip-smudge</code></p>
-</li>
-<li>
-<p><strong>Q3</strong>: main 브랜치를 잘못 건드렸다?</p>
-</li>
-<li>커밋하지 않았으면: <code>git reset --hard HEAD</code></li>
-<li>커밋했으면: <code>git revert &lt;hash&gt;</code> (새 커밋으로 되돌림)</li>
-<li>Force push 금지! (협업 규칙 위반)</li>
-</ul>
-<h2 id="_5">심화 학습<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">심화 학습<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Branching Strategy, Distributed VCS, Merge Conflict Resolution</li>
 <li>도구: Git LFS, Perforce, GitHub Actions</li>

@@ -1496,17 +1496,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2283,17 +2272,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        면접/실무 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         심화 학습
       
     </span>
@@ -2463,28 +2441,7 @@
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">FPlatformProcess</span><span class="o">::</span><span class="n">SetThreadPriority</span><span class="p">(</span><span class="n">Thread</span><span class="p">,</span><span class="w"> </span><span class="n">TPri_High</span><span class="p">);</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// 옵션: TPri_Highest, TPri_AboveNormal, TPri_Normal, TPri_BelowNormal, TPri_Lowest</span>
 </span></code></pre></div>
-<h2 id="_4">면접/실무 포인트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Q1</strong>: VSync와 Adaptive Sync의 차이점은? 언제 어느 것을 선택할까?</li>
-<li>VSync: 고정 리프레시 신호 동기화(16.67ms@60Hz). 고정적. 모든 모니터 지원.</li>
-<li>Adaptive: GPU 완료 신호 기준. 더블버퍼링 오버헤드 줄임. 최신 모니터 필요.</li>
-<li>
-<p>선택: 일관성 필요면 VSync, 저레이턴시 필요면 Adaptive Sync.</p>
-</li>
-<li>
-<p><strong>Q2</strong>: 컨텍스트 스위치가 게임 성능에 미치는 영향?</p>
-</li>
-<li>
-<p>TLB flush, L1/L2 캐시 무효화 → ~1000 사이클. 60fps에서 한 프레임은 ~27M 사이클. 컨텍스트 스위치 과다 시 프레임 타임 급증.</p>
-</li>
-<li>
-<p><strong>Q3</strong>: Fiber vs OS Thread, 어느 것을 쓸까?</p>
-</li>
-<li>Fiber: 명시적 제어, 오버헤드 적음 (작업 많고 컨텍스트 빈번하면 유리)</li>
-<li>OS Thread: 이해하기 쉬움, 세밀한 제어 어려움. 데드락, 경합 위험.</li>
-<li>현대 엔진: 하이브리드 (주요 로직 OS Thread + Job system Fiber).</li>
-</ul>
-<h2 id="_5">심화 학습<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">심화 학습<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>키워드: Real-time OS scheduling (RTOS), Priority Inversion, Load Balancing</li>
 <li>Unreal Engine: <code>FTaskGraph</code>, <code>FAsyncTask</code>, Task queue 구조</li>
