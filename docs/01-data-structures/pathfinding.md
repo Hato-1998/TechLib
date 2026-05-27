@@ -76,14 +76,6 @@ if (Path && Path->IsValid())
 - **RVO (Reciprocal Velocity Obstacles)** — NPC끼리 동적 회피
 - **Detour Crowd** — Recast의 동적 군중 회피 모듈
 
-## 면접/실무 포인트
-
-- **Q1**: 휴리스틱이 admissible하지 않으면? — 최적 경로 보장 안 됨(과대평가 시 일찍 종료). 게임에서는 약간 과대평가해 속도-품질 트레이드.
-- **Q2**: NPC 5,000마리 동시 길찾기를 어떻게 처리? — 매 프레임 분산(time-slicing), HPA*로 거시 경로 캐시, 동일 목표는 flow field 공유.
-- **Q3**: Navmesh vs Grid 선택 기준? — 자유로운 3D 지형이면 Navmesh, 일정한 셀 단위(타워디펜스, 보드게임)면 Grid.
-- **Q4**: A* 우선순위 큐 구현은? — 이진 힙이 일반적. Fibonacci heap은 이론적 우위지만 상수 커서 게임에선 거의 안 씀.
-- **Q5**: 경로 스무딩이 필요한 이유? — Navmesh 다각형 중심을 잇는 경로는 지그재그. **Funnel algorithm**으로 string-pulling 후 시각적 자연스러움 확보.
-
 ## 심화 학습
 
 - D\* Lite (변화하는 그래프에서의 재탐색)

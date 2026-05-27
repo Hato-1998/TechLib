@@ -222,20 +222,6 @@ FVector AMyActor::GetSafeLocation()
 4. 반복 → 원인 커밋 특정
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: "버그 못 찾겠어요"?
-  - 첫 질문: 재현 가능한가?
-  - 재현 불가 = 진행 불가. 먼저 재현성 확보.
-
-- **Q2**: 디버거로 찾은 버그인데 프로덕션에서 안 나타난다?
-  - Heisenbug 의심. 로그로 재추적.
-  - 타이밍/멀티스레드 이슈 검토.
-
-- **Q3**: Crash dump가 스택 표시 안 함?
-  - PDB 파일 경로 확인 (Symbol path 설정).
-  - 난독화/릴리스 빌드 → 디버그 정보 손실.
-
 ## 심화 학습
 
 - 키워드: Binary Search, Symbol Resolution, Call Stack Unwinding

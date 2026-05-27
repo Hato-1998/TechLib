@@ -93,14 +93,6 @@ Unreal에서는 `FConvexVolume::IntersectBox` 등이 동일 역할.
 
 - 작은 객체일수록 HZB의 효율이 높다 (개별 쿼리보다 묶음 처리)
 
-## 면접/실무 포인트
-
-- **Q1**: Bounding Sphere 대신 AABB를 쓰는 이유? — Sphere가 검사는 빠르지만(거리 1번), AABB가 더 타이트하게 객체를 감싸므로 false positive가 적다. 객체에 따라 선택.
-- **Q2**: 백페이스 컬링이 안 되는 경우는? — 양면 메시(나뭇잎, 반투명 면), Two-Sided 머티리얼. GPU에서 cull mode를 None으로 강제.
-- **Q3**: Occlusion query 한 프레임 지연이 시각적으로 문제 되나? — 카메라가 빠르게 회전할 때 한 프레임 깜빡임. HZB는 동일 프레임 내 처리 → 더 안정.
-- **Q4**: World Partition과 컬링은 어떻게 함께? — Cell 단위 스트리밍이 1차 컬링 역할. 로드되지 않은 Cell은 아예 메모리에도 없다.
-- **Q5**: Frustum culling을 GPU로 옮기는 이점? — CPU 부담 감소, GPU-driven rendering(Nanite 등)의 일부. 객체 수가 수십만이면 큰 차이.
-
 ## 심화 학습
 
 - Plane equation 부호 규약과 평면 정규화

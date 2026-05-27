@@ -66,13 +66,6 @@ private:
 
 `TMap`은 내부적으로 해시 기반이므로 평균 O(1) 조회. 정렬이 필요하면 `TSortedMap` 사용.
 
-## 면접/실무 포인트
-
-- **Q1**: `std::map`과 `std::unordered_map`을 게임에서 어떻게 골라 쓰는가? — 순회 순서가 중요하거나 키 범위 탐색이 있으면 `map`(RB-Tree). 순수 키 조회면 `unordered_map`.
-- **Q2**: Scene Graph에서 부모를 회전시켰을 때 자식 트랜스폼이 누적되는 원리? — 부모의 `World = Parent.World * Local`. 부동소수점 오차가 깊이에 비례해 누적되므로 깊은 계층은 피한다.
-- **Q3**: DAG에서 위상 정렬을 어떻게 구현하는가? — Kahn 알고리즘(진입 차수 0인 노드를 큐에 넣고 제거 반복). 사이클이 있으면 정렬 불가.
-- **Q4**: Behavior Tree와 State Machine의 차이? — BT는 계층적·재사용 가능한 의사결정, FSM은 평탄한 상태 전이. 복잡도가 올라가면 BT 우세.
-
 ## 심화 학습
 
 - B+ Tree, LSM Tree (저장소 자료구조)

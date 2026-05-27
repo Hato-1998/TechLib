@@ -97,14 +97,6 @@ void ThreadWork(int ThreadIdx)
 alignas(PLATFORM_CACHE_LINE_SIZE) FMyHotData Hot;
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: `std::vector`와 `std::list`의 캐시 관점 차이? — vector는 연속, list는 노드가 흩어져 있어 매 노드마다 캐시 미스. 작은 N이면 vector 삽입·삭제도 list보다 빠른 경우 많음.
-- **Q2**: ECS가 OOP보다 빠른 본질적 이유? — 같은 컴포넌트만 모은 chunk를 시스템이 순회 → SoA에 가까운 캐시 패턴.
-- **Q3**: 가상 함수 호출이 비싼 이유? — vtable 포인터 추적 → 캐시 미스 + branch prediction 실패. tight loop에서는 가상 함수 회피.
-- **Q4**: `__restrict` 키워드 의미? — 포인터 별칭(aliasing) 없음을 컴파일러에 약속 → 더 공격적인 최적화 가능.
-- **Q5**: Multi-threaded 카운터를 어떻게 설계? — false sharing 회피용 패딩 또는 thread-local 누적 후 합치기.
-
 ## 측정 도구
 
 - **perf** (Linux) — cache miss 카운터 (`cache-misses`, `LLC-load-misses`)

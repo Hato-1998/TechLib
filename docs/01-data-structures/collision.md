@@ -71,14 +71,6 @@ const bool bBlocked = GetWorld()->SweepSingleByChannel(
 
 한 프레임에 멀리 이동해도 sweep이 도중 충돌을 포착한다.
 
-## 면접/실무 포인트
-
-- **Q1**: 캐릭터에 Sphere 대신 Capsule을 쓰는 이유? — 보행자처럼 위아래로 길고 360° 회전해도 형태가 동일. 계단 처리와 슬라이딩이 자연스러움.
-- **Q2**: Broad phase 자료구조 선택 기준? — 정적이면 grid/octree, 동적이면 BVH 또는 Sweep-and-Prune.
-- **Q3**: CCD를 모든 객체에 켜지 않는 이유? — 비용이 크다(궤적 검사). 빠른 발사체·캐릭터에만 선택적으로 적용.
-- **Q4**: 두 메시가 정확히 한 점에서 만나는 경우의 부동소수점 함정은? — epsilon 비교, 거리 0 처리, contact manifold 흔들림. impulse가 진동.
-- **Q5**: PhysX와 Chaos의 broad phase 차이? — 둘 다 BVH 기반이지만 Chaos는 멀티스레드 친화 설계, GPU broad-phase 옵션도 존재.
-
 ## 심화 학습
 
 - EPA(Expanding Polytope Algorithm) — GJK 충돌 시 침투 깊이 계산

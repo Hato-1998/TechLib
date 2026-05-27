@@ -82,14 +82,6 @@ void AEnvActor::Tick(float Dt)
 - **Stationary Light** + 라이트맵 베이크 = 실내 환경의 전통적 정답
 - **Distance Field Shadow** — 거리 멀면 shadow map 대신 distance field로 그림자
 
-## 면접/실무 포인트
-
-- **Q1**: HLOD가 있는데 Nanite도 필요? — Nanite는 메시 자체의 자동 LOD. HLOD는 여러 메시를 묶는 단계. 큰 도시는 Nanite로 가도 머티리얼·라이팅 단순화 위해 HLOD가 의미.
-- **Q2**: World Partition vs Level Streaming(레거시) 차이? — Streaming은 명시적 sublevel 단위, Partition은 자동 Cell 단위. Partition이 협업·자동화 면에서 우수.
-- **Q3**: Lumen의 software vs hardware 트레이드? — software는 distance field 기반(어디서나 동작, 비용 중간). hardware는 RT, 더 정확하지만 GPU 요구 높음.
-- **Q4**: 라이트맵 해상도를 어떻게 정하나? — 표면 면적 × 시각적 중요도. 캐릭터 가까이 가는 벽은 높게, 천장은 낮게.
-- **Q5**: 메모리 예산이 빠듯한 모바일에서 무엇부터? — 텍스처 압축 포맷(ASTC), mip streaming, 라이트맵 해상도 하향, Nanite 미사용.
-
 ## 안티패턴
 
 - 모든 라이트를 Movable로 설정 → 그림자 비용 폭증

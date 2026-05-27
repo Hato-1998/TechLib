@@ -60,7 +60,6 @@ UGameplayMessageSubsystem::Get()->BroadcastMessage<FPlayerDeadMessage>(Message);
 // [AVOID]
 AGameMode::OnPlayerDead.Broadcast(Player);  // 강한 결합
 
-
 // Lyra 패턴 3: Feature Plugins로 기능 분리
 // [GOOD]
 // /Plugins/MyFeature/
@@ -169,20 +168,6 @@ for (int32 i = 0; i < Num; i += 4)
   - 보안 우려 (서버 검증 누락)
   - 명백한 버그
 ```
-
-## 면접/실무 포인트
-
-- **Q1**: 리뷰에서 성능 지적할 때 근거는?
-  - 추측 금지. 측정 또는 문헌 인용.
-  - "1M 반복에서 malloc 호출 → 10ms 오버헤드" (구체적).
-
-- **Q2**: 리뷰 코멘트 너무 많으면?
-  - 핵심 3개만. 나머지는 "nice-to-have".
-  - "개선하면 좋겠지만 blocking은 아니다" 표시.
-
-- **Q3**: 작성자가 반박하면?
-  - 토론 환영. 근거 있으면 입장 변경 (열린 자세).
-  - "맞다, 내가 놓쳤다" — 시니어일수록 빨리 인정.
 
 ## 심화 학습
 

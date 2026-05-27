@@ -235,23 +235,6 @@ void ApplyMovementCorrection(FVector ServerPos, float ErrorDistance)
 }
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: 외삽이 실패할 수 있는 상황은?
-  - 플레이어가 갑자기 방향 전환 (속도 변화 없는 가속도).
-  - 스킬 사용으로 위치 변경 (텔포트).
-  - 물리 이벤트 (낙하, 충돌).
-  - → 조정 필요.
-
-- **Q2**: 보간 지연을 줄이려면?
-  - TickRate 증가 (20→60Hz), 네트워크 비용↑.
-  - 부분 외삽 혼합.
-  - 클라 예측 (자신의 입력은 로컬 처리).
-
-- **Q3**: 회전(Rotation)은 어떻게 동기화할까?
-  - 위치와 동일: 외삽 후 Slerp(구면 보간) 조정.
-  - 앵귤러 속도 전송하면 더 부드러움.
-
 ## 심화 학습
 
 - 키워드: Lag-Compensated Movement, Angular Interpolation (Slerp/Quaternion)

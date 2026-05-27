@@ -63,14 +63,6 @@ stat rhi
 
 `Mesh draw calls` 행을 본다.
 
-## 면접/실무 포인트
-
-- **Q1**: 드로우콜이 비싼 본질적 이유는? — API 호출보다 **state 전환과 드라이버 검증**이 크다. 같은 머티리얼이면 batching이 가능한 이유.
-- **Q2**: Nanite가 모든 메시에 답인가? — 정적 메시·내부 deforming 없는 경우에 최적. 투명/half-transparent, WPO 변형, 일부 머티리얼은 fallback. UE5.5에서 스켈레탈 Nanite 도입되며 범위 확장.
-- **Q3**: ISM vs HISM 선택? — 적은 수면 ISM, 수천+ 멀리까지 보이면 HISM(LOD·컬링 자동).
-- **Q4**: DX12에서 드로우콜이 DX11보다 저렴한 이유? — 명령 버퍼를 미리 여러 스레드에서 작성, 드라이버 검증 감소. 하지만 PSO 관리·메모리 명시는 개발자 몫.
-- **Q5**: Material Slot 수를 줄이는 게 왜 드로우콜에 영향? — 슬롯마다 별도 머티리얼 → 슬롯별 드로우콜. 슬롯 통합 + Material Function으로 분기.
-
 ## 안티패턴
 
 - BP에서 매 Tick `SpawnActor`로 이펙트 생성 → 매 프레임 새 컴포넌트, 드로우콜 폭증

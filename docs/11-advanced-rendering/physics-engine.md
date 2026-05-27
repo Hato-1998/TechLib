@@ -197,21 +197,6 @@ GetWorld()->GetPhysicsScene()->SetPhysicsConstraintIterations(2);  // Default 4
 Comp->SetPhysicsMaxAngularVelocity(1000.0f, false, false);
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: PhysX vs Chaos, 어떤 게 나을까?
-  - Chaos: UE5 기본, 더 나은 성능, 게임 친화적.
-  - PhysX: 레거시 지원, 외부 프로젝트와 호환.
-
-- **Q2**: 물리 시뮬레이션이 프레임을 먹는다?
-  - Actor 개수 감소 (Pool 사용).
-  - Collision complexity 낮춤 (Simple → Complex).
-  - Tick 빈도 감소 (고정 rate 시뮬레이션).
-
-- **Q3**: 고속 총알이 벽을 통과한다?
-  - CCD 활성화.
-  - Mesh collision 복잡도 확인.
-
 ## 심화 학습
 
 - 키워드: Constraint Graphs, Island Management, Broad-Phase Collision

@@ -288,21 +288,6 @@ struct ATree
 | **강한 결합** | ClassA → ClassB → ClassC 참조 | 이벤트 버스 중개 |
 | **Deep Inheritance** | 3단계 이상 상속 | Component 조합 |
 
-## 면접/실무 포인트
-
-- **Q1**: "Object Pool vs 동적 할당, 뭐가 나을까?"
-  - 메모리 할당이 핫패스면 Pool.
-  - 한두 번만 생성되면 동적 할당 괜찮음.
-  - 측정 필수.
-
-- **Q2**: Component 너무 많으면 성능 저하?
-  - 복잡도보다는 메모리 접근 패턴 중요.
-  - SoA (System of Arrays) 설계하면 캐시 친화.
-
-- **Q3**: State Machine이 너무 복잡해진다?
-  - 상태 수 > 15개 → 다시 설계 검토.
-  - State 패턴(각 상태 클래스) 고려.
-
 ## 심화 학습
 
 - 키워드: Behavioral Pattern, Structural Pattern, Real-Time Constraints

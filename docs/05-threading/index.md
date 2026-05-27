@@ -42,12 +42,6 @@ flowchart LR
 
 **가장 좋은 락은 락이 없는 것** — 데이터를 분리할 수 있으면 우선 분리.
 
-## 면접 빈출 주제
-
-- "race condition을 어떻게 디버깅?" → 재현성 확보(deterministic seed, replay), TSan
-- "Game Thread에서 무거운 일을 Worker로 옮길 때 위험은?" → UObject 접근 규칙, GC와의 충돌
-- "deadlock 진단법?" → 락 획득 순서 통일, 디버거 스레드별 콜스택, deadlock detector
-
 ## 안티패턴 미리보기
 
 - "동기화 빠지면 락부터" — 종종 atomic이면 충분하거나 데이터 분리로 락 자체 회피 가능

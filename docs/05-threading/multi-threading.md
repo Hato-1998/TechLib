@@ -95,14 +95,6 @@ while (Queue.Dequeue(C)) { /* 처리 */ }
 
 여러 producer면 `EQueueMode::Mpsc`. lock-free 큐는 메모리 ordering 내부 처리.
 
-## 면접/실무 포인트
-
-- **Q1**: `Counter++`가 race인 이유? — load/add/store 3단계. 그 사이 다른 스레드 끼어들면 손실.
-- **Q2**: `std::atomic<int>` 만 쓰면 lock-free 보장? — 플랫폼/타입 따라 다름. `is_lock_free()` 확인. 8/16/32/64bit 정수는 대부분 lock-free.
-- **Q3**: 스핀락 vs 뮤텍스 선택 기준? — 임계구간이 매우 짧고 컨텐션 낮으면 스핀락. 긴 구간이면 뮤텍스(컨텍스트 스위치 비용 < 대기 비용).
-- **Q4**: deadlock을 컴파일 타임에 막을 수 있나? — 락 순서를 타입 시스템으로 강제(예: `std::scoped_lock` + 두 락 동시 획득). 또는 코드 리뷰·동적 검사.
-- **Q5**: TSAN (ThreadSanitizer)의 동작 원리? — 모든 메모리 접근에 happens-before 그래프 추적. race 시 보고. Debug 빌드에서 사용, 릴리스에선 비용 너무 큼.
-
 ## 안티패턴
 
 - 락 안에서 또 다른 함수 호출 → 내부에서 같은 락 시도하면 deadlock (재귀 락 아닌 한)

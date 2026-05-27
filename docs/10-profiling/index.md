@@ -191,22 +191,6 @@ void MyGameFunction()
 [ ] 재측정으로 개선율 검증
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: "우리 게임이 느려요" → 첫 번째 질문은?
-  - CPU 바운드인가 GPU 바운드인가?
-  - `stat unit` 보기. GPU time이 크면 렌더링, Game time 크면 로직.
-
-- **Q2**: Insights vs PIX vs Tracy, 어떤 걸 쓸까?
-  - Insights: 엔진 통합, 쉬움. 기본 선택.
-  - PIX: DX12 전문, 세밀함.
-  - Tracy: 가볍고 원격, 프로덕션.
-
-- **Q3**: "측정해봤는데 별 거 없네요"?
-  - 피크 vs 평균 구분. 1회 스파이크는 무시.
-  - 다른 도구로 재측정 (cross-validation).
-  - 가설 재검토 (실제 병목이 다를 수 있음).
-
 ## 심화 학습
 
 - 키워드: Profiling Overhead Compensation, Sampling vs Instrumentation, Real-Time Analysis

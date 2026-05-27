@@ -100,14 +100,6 @@ ParallelFor(N, [&](int32 i)
 for (auto& B : Buckets) Results.Append(B);
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: ParallelFor가 항상 빨라지지 않는 이유? — 잡 크기가 너무 작거나 메모리 액세스 패턴이 캐시 미스 유발이면 단일 스레드보다 느릴 수 있음.
-- **Q2**: Work stealing이 단순 라운드로빈보다 나은 점? — 잡 크기가 불균등할 때 자동 균등화. 짧은 잡 워커가 긴 잡 워커 큐를 도와줌.
-- **Q3**: Burst Compiler가 빠른 이유? — IL2CPP 대비 더 공격적 LLVM 최적화 + SIMD intrinsic 자동 생성. ECS의 SoA가 burst와 시너지.
-- **Q4**: Task Graph DAG가 깊으면 어떤 문제? — 직렬 경로 길어져 병렬도↓. 의존성 줄여 wide DAG로 만든다.
-- **Q5**: GPU compute로 보낼지, CPU 병렬로 풀지 기준? — 데이터가 크고 동질적 계산이면 GPU(transfer 비용 회수 가능). 적은 데이터·다양한 분기면 CPU.
-
 ## 안티패턴
 
 - ParallelFor 안에서 락 사용 — 병렬도 무효화

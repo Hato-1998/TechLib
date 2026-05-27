@@ -76,13 +76,6 @@ void QueryOverlap(const TArray<FBVHNode>& Nodes, int32 NodeIdx,
 
 리프가 아닌 노드는 박스 교차 검사로 가지치기. 트리 깊이가 ~log N이므로 질의가 빠르다.
 
-## 면접/실무 포인트
-
-- **Q1**: 동적 BVH의 refit vs rebuild는 언제 선택하나? — 객체 이동량이 누적되면 트리 품질이 나빠진다. **SAH 비용이 임계 이상이면 재빌드**, 아니면 refit.
-- **Q2**: Octree에서 객체가 여러 자식에 걸치면? — 분할하지 않고 부모에 두는 게 일반적. 객체가 매우 크면 트리 효율 저하 → loose octree 등 변형.
-- **Q3**: Unreal의 World Partition은 어떤 자료구조에 가까운가? — Grid 기반(Cell). Octree보다 단순하지만 메모리 스트리밍과 잘 맞는다.
-- **Q4**: BSP가 옛 FPS(Quake)에서 잘 맞은 이유? — 정적 실내 + 가시성 계산(PVS) 친화. 동적 객체 많은 현대 게임엔 부적합.
-
 ## 심화 학습
 
 - SAH(Surface Area Heuristic)와 트리 품질 지표

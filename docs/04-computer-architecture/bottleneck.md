@@ -89,14 +89,6 @@ Unreal `USignificanceManager`로 거리·각도에 따라 Tick 주기를 자동 
 
 자세한 사용법은 [프로파일링 & 최적화 도구](../10-profiling/index.md).
 
-## 면접/실무 포인트
-
-- **Q1**: Game Thread가 병목일 때 BP → C++ 전환이 답인가? — BP 자체보다 **Tick 빈도와 알고리즘 복잡도**가 더 큰 요인. BP가 핫패스에 있으면 C++ 이전 효과 있음.
-- **Q2**: GPU bound에서 해상도를 낮추는 게 항상 정답? — pixel bound면 효과 큼, vertex bound면 거의 무효. 먼저 어느 쪽인지 확인.
-- **Q3**: Multi-thread Render Thread (Parallel Rendering) 효과? — DX12/Vulkan에서 command buffer를 여러 스레드가 동시 작성. Render Thread 단일 코어 병목 완화.
-- **Q4**: Overdraw가 뭐고 어떻게 측정? — 같은 픽셀을 여러 번 그리는 비용. RenderDoc, ViewMode `ShaderComplexity`로 시각화. 반투명 폴리지·파티클이 주범.
-- **Q5**: VSync가 켜진 상태에서의 측정 함정? — 실제 비용보다 좋게 보임(상한이 16.6ms). 측정 시 VSync 끄거나 unlocked framerate.
-
 ## 안티패턴
 
 - "최적화 책 읽고 모든 곳에 inline·SIMD" — 측정 없이 한 변화는 회귀

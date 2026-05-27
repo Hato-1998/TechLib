@@ -220,20 +220,6 @@ flowchart TD
     Large --> ECS["ECS 또는 순수 DOD<br/>Mass / DOTS"]
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: "우리 게임이 10K 엔티티에서 프레임 드롭"?
-  - OOP라면 → ECS/DOD로 마이그레이션 고려.
-  - 가상 함수 호출 주범일 가능성 높음.
-
-- **Q2**: OOP 상속 vs ECS 조합, 어느 게 더 모듈화?
-  - 작은 기능: OOP.
-  - 조합 많음: ECS (깊은 상속 피함).
-
-- **Q3**: "DOD로 짜니 버그가 많다"?
-  - 데이터와 로직 분산 → 추적 어려움.
-  - 테스트 커버리지↑, 타입 시스템↑ (Rust 추천).
-
 ## 심화 학습
 
 - 키워드: Cache Locality, SIMD Optimization, Type Erasure

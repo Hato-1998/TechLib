@@ -136,21 +136,6 @@ FPlatformProcess::SetThreadPriority(Thread, TPri_High);
 // 옵션: TPri_Highest, TPri_AboveNormal, TPri_Normal, TPri_BelowNormal, TPri_Lowest
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: VSync와 Adaptive Sync의 차이점은? 언제 어느 것을 선택할까?
-  - VSync: 고정 리프레시 신호 동기화(16.67ms@60Hz). 고정적. 모든 모니터 지원.
-  - Adaptive: GPU 완료 신호 기준. 더블버퍼링 오버헤드 줄임. 최신 모니터 필요.
-  - 선택: 일관성 필요면 VSync, 저레이턴시 필요면 Adaptive Sync.
-
-- **Q2**: 컨텍스트 스위치가 게임 성능에 미치는 영향?
-  - TLB flush, L1/L2 캐시 무효화 → ~1000 사이클. 60fps에서 한 프레임은 ~27M 사이클. 컨텍스트 스위치 과다 시 프레임 타임 급증.
-
-- **Q3**: Fiber vs OS Thread, 어느 것을 쓸까?
-  - Fiber: 명시적 제어, 오버헤드 적음 (작업 많고 컨텍스트 빈번하면 유리)
-  - OS Thread: 이해하기 쉬움, 세밀한 제어 어려움. 데드락, 경합 위험.
-  - 현대 엔진: 하이브리드 (주요 로직 OS Thread + Job system Fiber).
-
 ## 심화 학습
 
 - 키워드: Real-time OS scheduling (RTOS), Priority Inversion, Load Balancing

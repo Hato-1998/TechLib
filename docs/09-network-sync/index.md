@@ -123,20 +123,6 @@ AMyCharacter::AMyCharacter()
 }
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: P2P vs Client-Server, 어떤 게임에 각각 적합할까?
-  - P2P: 인디, 지역 네트워크 멀티. 비용 낮음, 치팅 방지 어려움.
-  - Client-Server: 경쟁/온라인 게임. 신뢰성↑, 서버 비용↑.
-
-- **Q2**: Tick Rate 20Hz vs 60Hz 트레이드오프?
-  - 20Hz: 네트워크 대역폭 1/3, 하지만 동작 끊김.
-  - 60Hz: 부드러움, 트래픽 3배. 모바일/콘솔은 30-40Hz.
-
-- **Q3**: Replication vs Iris, 언제 Iris로 마이그레이션?
-  - 기존 프로젝트: Replication으로 충분 (Iris는 엔진 기본).
-  - 신규 5.5+: Iris 기본 추천.
-
 ## 심화 학습
 
 - 키워드: Authoritative Server Validation, Bandwidth Optimization, Replication Graphs

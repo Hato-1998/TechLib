@@ -168,21 +168,6 @@ GetWorld()->StreamLevel(TEXT("Level_Old"), false, true); // bShouldBeLoaded=fals
   → 부드러운 전환, 드롭 없음
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: Level Streaming의 문제점은? 왜 World Partition이 필요했을까?
-  - Level Streaming: 수동 로드/언로드 → 구역 경계 관리 복잡. 겹침/빈 공간 생김.
-  - World Partition: 자동 분할 → 균일한 Cell, 데이터-드리븐 로드.
-
-- **Q2**: 페이지 폴트 프리페칭(prefetch) 전략?
-  - 플레이어 이동 방향 예측 → 다음 Cell 미리 스트리밍.
-  - 로드 시간 > 프레임 시간 → 다중 프레임 분산 로드.
-
-- **Q3**: Texture Mip Streaming 활성화 후 VRAM 폭발했다?
-  - StreamingPoolSize 설정 확인 (ProjectSettings → Engine → Rendering → Textures).
-  - Mip Bias 튜닝 (멀리서 높은 Mip 강제).
-  - 불필요한 고해상도 Mip 생성 비활성화.
-
 ## 심화 학습
 
 - 키워드: Virtual Memory Paging, Prefetch Algorithms, Streaming Pool Management

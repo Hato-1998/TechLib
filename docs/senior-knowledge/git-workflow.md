@@ -230,21 +230,6 @@ GitHub Actions (또는 Jenkins, Unreal Automation)
 → 리뷰어 판단 용이
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: 대규모 팀(50명+), 어떤 워크플로우?
-  - Trunk-based + 강한 CI/CD.
-  - 또는 Perforce (중앙집중형).
-
-- **Q2**: Git LFS 프로젝트, clone이 느려진다?
-  - Shallow clone 고려.
-  - 부분 LFS 다운로드: `git lfs install --skip-smudge`
-
-- **Q3**: main 브랜치를 잘못 건드렸다?
-  - 커밋하지 않았으면: `git reset --hard HEAD`
-  - 커밋했으면: `git revert <hash>` (새 커밋으로 되돌림)
-  - Force push 금지! (협업 규칙 위반)
-
 ## 심화 학습
 
 - 키워드: Branching Strategy, Distributed VCS, Merge Conflict Resolution

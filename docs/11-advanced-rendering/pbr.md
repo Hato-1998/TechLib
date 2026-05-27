@@ -184,22 +184,6 @@ class UMySubstrateMaterial : public UMaterialInterface
   단점: 계산 비용
 ```
 
-## 면접/실무 포인트
-
-- **Q1**: Metallic=1일 때도 BaseColor가 중요한 이유?
-  - BaseColor가 specular(반사) 색상 결정. 금속의 톤 표현.
-  - 예: 금색 금속 ≠ 은색 금속 (BaseColor 다름).
-
-- **Q2**: Normal Map이 깨져 보인다?
-  - 노멀맵 포맷 확인 (BC5 vs BC1).
-  - TBN 행렬 계산 오류 (특히 스킨드 메시).
-  - 노멀맵 강도 과도 (높이 정보 부족).
-
-- **Q3**: PBR 머티리얼이 너무 밝다/어둡다?
-  - BaseColor 범위 검증 (0~1, 선형 공간).
-  - Roughness 과도 (1에 가깝게) → 흡수 증가.
-  - 라이트 강도 조절 (HDR 환경).
-
 ## 심화 학습
 
 - 키워드: Microfacet Theory, Fresnel Equations, Ambient Occlusion Baking

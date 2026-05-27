@@ -83,14 +83,6 @@ AsyncTask(ENamedThreads::AnyBackgroundThreadNormalTask, [this]()
 
 WeakPtr/Weak Object Pointer로 객체 수명 확인 후 적용.
 
-## 면접/실무 포인트
-
-- **Q1**: 1프레임 지연이 왜 입력감을 떨어뜨리는가? — 입력 받은 시점과 화면에 반영되는 시점이 16.6ms 이상 차이. 60Hz면 약 33ms 입력 지연.
-- **Q2**: 모든 작업을 Game Thread에서 직렬화하면 안 되나? — 코어 1개만 사용 → 처리량 절반 이하. 멀티코어 CPU 활용 불가.
-- **Q3**: 워커에서 `UObject` 접근 시 어떻게 우회? — 가벼운 POD struct로 데이터 추출 후 워커가 처리, 결과를 Game Thread로 복귀. 또는 weak pointer + 메인에서 dereference.
-- **Q4**: Render Thread가 Game Thread를 한 프레임 따라가지 못하면? — Game Thread가 다음 프레임 시작을 대기(stall). Game이 너무 빨라도 문제, Render가 너무 느려도 문제 — 균형이 중요.
-- **Q5**: Physics 결과를 받는 시점이 1프레임 늦어 부자연스러우면? — Sub-step 늘리거나(Chaos), 클라이언트 예측처럼 즉시 시각 보정 후 결과 도착 시 보정.
-
 ## 안티패턴
 
 - Game Thread에서 동기 IO/네트워크 → 메인 스레드 정지, 프레임 드랍
