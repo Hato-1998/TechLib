@@ -47,8 +47,18 @@ TechLib/
     ├── 10-profiling/           # Unreal Insights, RenderDoc, Tracy
     ├── 11-advanced-rendering/  # 물리 엔진, PBR, WFC
     ├── 12-oop-vs-dod-ecs/      # 패러다임 비교
-    └── senior-knowledge/       # 5년차 이상 추가 지식
+    ├── senior-knowledge/       # 5년차 이상 추가 지식
+    └── study/                  # 학습 탭: 필기·면접 대비 학습지
+        ├── index.md            # 학습 안내
+        └── stage1/index.html   # 1단계 학습지 (생성 파일, 직접 편집하지 않음)
 ```
+
+## 사이트 구성: 위키 탭과 학습 탭
+
+`mkdocs.yml`의 `nav`는 최상위가 두 탭으로 나뉜다.
+
+- **위키**: 기존 기술 위키. 섹션과 페이지는 모두 이 탭 아래에 있다. `tools/add_page.py`와 브라우저 편집기는 이 탭 안의 섹션만 다룬다.
+- **학습**: 필기·면접 대비 학습지. `docs/study/stageN/index.html`은 비공개 노트 원본에서 변환 스크립트(`build_worksheet.py --public-out docs/study/stageN`)로 만든 결과물이다. 개인 프로젝트의 코드 위치와 검토 메모는 변환할 때 걸러 낸다. 내용을 고칠 때는 원본 노트를 고친 뒤 다시 생성한다.
 
 ## 기여 방법
 

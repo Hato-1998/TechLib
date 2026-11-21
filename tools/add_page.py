@@ -107,10 +107,26 @@ def load_config() -> dict:
     return yaml.load(read_text(MKDOCS_YML), Loader=_PermissiveLoader)
 
 
-def get_sections(config: dict) -> list[tuple[str, object]]:
-    """nav에서 '홈'을 제외한 [(이름, value)] 반환."""
-    out = []
+WIKI_TAB = "위키"
+
+
+def wiki_nav(config: dict) -> list:
+    """위키 섹션들이 들어 있는 nav 리스트를 돌려준다.
+
+    nav 최상위가 '위키'·'학습' 탭으로 나뉘어 있으면 '위키' 탭의 리스트를,
+    예전처럼 섹션이 최상위에 바로 있으면 nav 자체를 돌려준다.
+    돌려준 리스트는 config["nav"] 안의 같은 객체이므로, 수정하면 config에 그대로 반영된다.
+    """
     for item in config.get("nav", []):
+        if isinstance(item, dict) and isinstance(item.get(WIKI_TAB), list):
+            return item[WIKI_TAB]
+    return config.get("nav", [])
+
+
+def get_sections(config: dict) -> list[tuple[str, object]]:
+    """위키 nav에서 '홈'을 제외한 [(이름, value)] 반환."""
+    out = []
+    for item in wiki_nav(config):
         if not isinstance(item, dict):
             continue
         for name, value in item.items():
@@ -137,22 +153,29 @@ def is_multipage(value) -> bool:
     return isinstance(value, list)
 
 
-def serialize_nav(nav: list) -> str:
-    """nav 리스트를 mkdocs.yml 들여쓰기 규약에 맞춰 직렬화."""
-    lines = ["nav:"]
-    for item in nav:
+def _serialize_nav_items(items: list, indent: str) -> list[str]:
+    lines = []
+    for item in items:
+        if isinstance(item, str):
+            lines.append(f"{indent}- {item}")
+            continue
         if not isinstance(item, dict):
             continue
         for name, value in item.items():
-            if isinstance(value, str):
-                lines.append(f"  - {name}: {value}")
-            elif isinstance(value, list):
-                lines.append(f"  - {name}:")
-                for sub in value:
-                    if isinstance(sub, dict):
-                        for sname, spath in sub.items():
-                            lines.append(f"      - {sname}: {spath}")
-    return "\n".join(lines)
+            if isinstance(value, list):
+                lines.append(f"{indent}- {name}:")
+                lines.extend(_serialize_nav_items(value, indent + "    "))
+            else:
+                lines.append(f"{indent}- {name}: {value}")
+    return lines
+
+
+def serialize_nav(nav: list) -> str:
+    """nav 리스트를 mkdocs.yml 들여쓰기 규약(2칸, 하위 단계마다 4칸 추가)에 맞춰 직렬화.
+
+    '위키' 탭 아래 섹션 아래 페이지처럼 여러 단계로 중첩된 nav도 처리한다.
+    """
+    return "\n".join(["nav:"] + _serialize_nav_items(nav, "  "))
 
 
 def replace_nav_block(yml_text: str, new_nav: str) -> str:
@@ -282,7 +305,7 @@ def add_page_to_section(
     open_editor: bool = True,
 ) -> int:
     config = load_config()
-    nav = config["nav"]
+    nav = wiki_nav(config)
 
     # 섹션 찾기
     target = None
@@ -337,7 +360,7 @@ def add_page_to_section(
     print(f"  [OK] 파일 생성: {new_file.relative_to(ROOT)}")
 
     # mkdocs.yml 갱신
-    new_nav_text = serialize_nav(nav)
+    new_nav_text = serialize_nav(config["nav"])
     new_yml = replace_nav_block(read_text(MKDOCS_YML), new_nav_text)
     write_text(MKDOCS_YML, new_yml)
     print(f"  [OK] mkdocs.yml 업데이트")
@@ -416,7 +439,7 @@ def create_new_section(
 
     # mkdocs.yml nav 추가
     config = load_config()
-    nav = config["nav"]
+    nav = wiki_nav(config)
     if multipage:
         new_entry = {full_name: [
             {"개요": f"{folder_slug}/index.md"},
@@ -426,7 +449,7 @@ def create_new_section(
         new_entry = {full_name: f"{folder_slug}/index.md"}
     nav.append(new_entry)
 
-    new_nav_text = serialize_nav(nav)
+    new_nav_text = serialize_nav(config["nav"])
     new_yml = replace_nav_block(read_text(MKDOCS_YML), new_nav_text)
     write_text(MKDOCS_YML, new_yml)
     print(f"  [OK] mkdocs.yml 업데이트")
@@ -458,7 +481,7 @@ def remove_page(
 ) -> int:
     """기존 페이지를 nav·섹션 index에서 제거하고 파일을 삭제한다."""
     config = load_config()
-    nav = config["nav"]
+    nav = wiki_nav(config)
 
     target = None
     for item in nav:
@@ -510,7 +533,7 @@ def remove_page(
         print(f"  [OK] 파일 삭제: {target_file.relative_to(ROOT)}")
 
     # mkdocs.yml 갱신
-    new_nav_text = serialize_nav(nav)
+    new_nav_text = serialize_nav(config["nav"])
     new_yml = replace_nav_block(read_text(MKDOCS_YML), new_nav_text)
     write_text(MKDOCS_YML, new_yml)
     print(f"  [OK] mkdocs.yml 업데이트")

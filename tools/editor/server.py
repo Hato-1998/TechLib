@@ -324,7 +324,7 @@ class EditorHandler(http.server.BaseHTTPRequestHandler):
 
                 # 새 파일의 상대 경로 계산
                 config = ap.load_config()
-                for item in config["nav"]:
+                for item in ap.wiki_nav(config):
                     if isinstance(item, dict) and section in item:
                         folder = ap.section_folder(item[section])
                         new_rel = (folder / f"{slug}.md").relative_to(DOCS).as_posix()
