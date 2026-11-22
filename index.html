@@ -1943,7 +1943,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        섹션 안내
+        게임에서 마주친 문제로 찾기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        분야별 기술 문서
       
     </span>
   </a>
@@ -1968,12 +1979,50 @@
 
 
 <h1 id="_1">게임 프로그래밍 기술 위키<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>게임 프로그래밍 기술 자료를 정리한 개인 기술 위키</p>
-<div class="admonition tip">
-<p class="admonition-title">학습 탭</p>
-<p>필기 테스트·기술 면접 대비 학습지는 위쪽의 <strong>학습</strong> 탭에 있습니다. → <a href="study/">학습 안내</a></p>
-</div>
-<h2 id="_2">섹션 안내<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>구현 중 만난 문제를 골라 관련 개념을 찾아보세요. C++ 필기 문제와 UE5 사례를 차례로 공부하려면 <a href="study/">학습실</a>에서 시작할 수 있습니다.</p>
+<h2 id="_2">게임에서 마주친 문제로 찾기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>궁금한 점</th>
+<th>먼저 읽을 개념</th>
+<th>게임에 적용하기</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>적이 많아지면 표적 탐색이 느려진다</td>
+<td><a href="01-data-structures/">공간 분할과 자료구조</a>, <a href="03-cache-memory/">캐시 메모리</a></td>
+<td>탐색 후보 수와 메모리 접근 비용을 나눠 측정합니다.</td>
+</tr>
+<tr>
+<td>화면에 보이는 물체를 줄였는데 프레임 시간이 그대로다</td>
+<td><a href="02-linear-algebra/">컬링과 선형대수</a>, <a href="04-computer-architecture/">렌더링 병목</a></td>
+<td>CPU와 GPU 중 어느 쪽이 프레임을 제한하는지 확인합니다.</td>
+</tr>
+<tr>
+<td>레벨 경계에서 화면이 잠깐 멈춘다</td>
+<td><a href="08-memory-management/">스트리밍</a>, <a href="06-memory-allocation/">동적 할당</a>, <a href="10-profiling/">프로파일링</a></td>
+<td>최초 로딩과 반복되는 할당을 서로 다른 구간에서 비교합니다.</td>
+</tr>
+<tr>
+<td>부하가 낮아도 프레임 간격이 불규칙하다</td>
+<td><a href="05-threading/">스레드 동기화</a>, <a href="07-os-scheduling/">OS 스케줄링</a></td>
+<td>게임 스레드가 일하는 시간과 대기하는 시간을 구분합니다.</td>
+</tr>
+<tr>
+<td>중간에 합류하면 미션 HUD가 비어 있다</td>
+<td><a href="09-network-sync/">네트워크 동기화</a>, <a href="study/UE5_Content_Programming_Workbook/">UE5 학습서 3·7장</a></td>
+<td>현재 상태가 도착한 순간과 화면이 알림을 구독한 순간을 비교합니다.</td>
+</tr>
+<tr>
+<td>결과 창을 열 때마다 보상음이 한 번씩 늘어난다</td>
+<td><a href="senior-knowledge/">디버깅과 코드 리뷰</a>, <a href="study/UE5_Content_Programming_Workbook/">UE5 학습서 10장</a></td>
+<td>지급·통지·재생 횟수를 같은 미션 ID로 추적합니다.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">분야별 기술 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="grid cards">
 <ul>
 <li>
