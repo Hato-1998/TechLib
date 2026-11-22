@@ -1,0 +1,2258 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="게임 프로그래머를 위한 자료구조·수학·메모리·렌더링·네트워크 기술 정리">
+      
+      
+        <meta name="author" content="san9640">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>UE5 게임 콘텐츠 프로그래머 이론 학습서 - TechLib — 게임 프로그래밍 기술 위키</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ue5" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="TechLib — 게임 프로그래밍 기술 위키" class="md-header__button md-logo" aria-label="TechLib — 게임 프로그래밍 기술 위키" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechLib — 게임 프로그래밍 기술 위키
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UE5 게임 콘텐츠 프로그래머 이론 학습서
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  위키
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  학습
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="TechLib — 게임 프로그래밍 기술 위키" class="md-nav__button md-logo" aria-label="TechLib — 게임 프로그래밍 기술 위키" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TechLib — 게임 프로그래밍 기술 위키
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    위키
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    위키
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../01-data-structures/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 자료구조
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 자료구조
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-data-structures/tree-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tree & Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-data-structures/space-partitioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공간 분할(트리 분할)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-data-structures/collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    충돌 연산
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-data-structures/pathfinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    길찾기 알고리즘
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../02-linear-algebra/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 선형대수학
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 선형대수학
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-linear-algebra/matrix-transform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    행렬 변환
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-linear-algebra/dot-cross-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내적·외적
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-linear-algebra/frustum-culling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시야각 & 백페이스 컬링
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-cache-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 캐시 메모리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../04-computer-architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 컴퓨터 아키텍처
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 컴퓨터 아키텍처
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-computer-architecture/draw-call/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Draw Call
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-computer-architecture/bottleneck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    병목 현상 최소화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-computer-architecture/environment-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    배경 최적화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../05-threading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 스레드 & 동기화
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 스레드 & 동기화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-threading/multi-threading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    멀티스레딩 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-threading/render-physics-split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    메인/렌더/물리 분리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-threading/parallel-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    병렬 처리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-memory-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 동적 할당 & 단편화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-os-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. OS 스케줄링
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-memory-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 메모리 관리 & 심리스 로딩
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../09-network-sync/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 네트워크 동기화
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. 네트워크 동기화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-network-sync/client-prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    클라이언트 예측
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-network-sync/dead-reckoning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    추측 항법(Dead Reckoning)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 프로파일링 & 최적화 도구
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../11-advanced-rendering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 물리·렌더링 심화
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_12" id="__nav_1_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11. 물리·렌더링 심화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11-advanced-rendering/physics-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    물리 엔진 심화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11-advanced-rendering/pbr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PBR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11-advanced-rendering/wfc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WFC 알고리즘
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12-oop-vs-dod-ecs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. OOP vs DOD/ECS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../senior-knowledge/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시니어 지식 (5년차+)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시니어 지식 (5년차+)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../senior-knowledge/debugging-mindset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    디버깅 마인드셋
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../senior-knowledge/code-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 리뷰 관점
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../senior-knowledge/design-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    게임 디자인 패턴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../senior-knowledge/git-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git & 협업 워크플로우
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../senior-knowledge/tech-trends-2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최신 트렌드 2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    학습
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ue5">UE5 게임 콘텐츠 프로그래머 이론 학습서<a class="headerlink" href="#ue5" title="Permanent link">&para;</a></h1>
+<p><em>협동 FPS 한 판으로 배우는 상태, 수명, 복제, UI</em></p>
+<p>이 책은 UE5 C++로 게임 기능을 구현해 본 개발자를 위한 학습서입니다. 1부에서는 5~10년차 개발자를 목표로 공부할 설계 문제를, 2부에서는 Project ZETA 콘텐츠 클라이언트 직무에 필요한 이론을 다룹니다. 연차는 학습 깊이를 정하기 위한 기준입니다. 채용 요건은 콘텐츠 직무 재게시본을 기준으로 정리했습니다. 원문 번호 244602와 재게시본이 같은 공고인지는 확인되지 않았습니다. 코드와 수치는 설명을 위한 예시이며, UE 프로젝트에서 빌드 검증하지 않았습니다.</p>
+<p><a href="https://zighang.com/recruitment/b1424070-2121-4fdf-a38c-03436270fb01">채용 근거</a></p>
+<p><strong>읽는 방법</strong>　각 장의 질문을 읽고 먼저 게임 화면을 상상해 보세요. ‘플레이어는 무엇을 보는가?’, ‘그 값을 누가 바꾸는가?’, ‘어떤 로그를 보면 내 예상이 맞는지 알 수 있는가?’의 순서로 답하면 됩니다. 한국어 설명을 다듬을 때는 개념을 짧게 정의하고 작은 코드에서 결과를 확인하는 위키독스의 구성을 참고했습니다. <a href="https://wikidocs.net/347267">참고한 글 · 디버깅과 테스트</a></p>
+<h1 id="1">1부 · 경력자가 판단할 수 있어야 할 게임 프로그래밍 문제<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<h2 id="1_1">1. 수명과 소유권 · 플레이어가 죽으면 어떤 데이터가 사라져야 하는가?<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
+<p>팀원이 쓰러졌다가 새 캐릭터로 부활합니다. 이때 점수까지 0점으로 돌아간다면 무엇이 잘못됐을까요? 점수를 죽기 전 캐릭터에만 저장했을 가능성이 있습니다. <strong>객체의 수명</strong>은 그 객체가 만들어져서 사라질 때까지의 기간입니다. 값을 어디에 저장할지 정할 때는 그 값이 언제까지 남아야 하는지 먼저 생각합니다.</p>
+<p>탄창에 남은 탄약은 장비에, 부활 후에도 유지할 점수는 <code>PlayerState</code>에 둘 수 있습니다. 서버의 <code>GameMode</code>가 코어 확보를 판정한다면, 모든 플레이어가 볼 공동 진행도는 <code>GameState</code>에 두는 식입니다. <code>ActorComponent</code>는 여러 액터에서 장비 동작을 재사용할 때 유용합니다. 다만 소유 액터가 사라진 뒤에도 필요한 전적은 더 오래 유지되는 곳에 저장해야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th>의도</th>
+<th>UE 표현</th>
+<th>사례</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UObject가 다른 객체를 보유</td>
+<td><code>UPROPERTY()</code>로 선언한 <code>TObjectPtr&lt;T&gt;</code> 멤버</td>
+<td>장비 객체를 소유하는 인벤토리</td>
+</tr>
+<tr>
+<td>사라질 수 있는 대상을 관찰</td>
+<td><code>TWeakObjectPtr&lt;T&gt;</code></td>
+<td>관전 위젯이 참조하는 Pawn</td>
+</tr>
+<tr>
+<td>아직 로드하지 않은 에셋 식별</td>
+<td><code>TSoftObjectPtr&lt;T&gt;</code></td>
+<td>상점의 고해상도 스킨</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관전 화면으로 확인해 봅시다.</strong> A를 관전하다가 B로 시점을 바꿨는데 체력 바에는 여전히 A의 체력이 보입니다. A가 아직 월드에 남아 있다면 포인터 유효성 검사도 통과합니다. 이때 확인할 것은 ‘A가 살아 있는가?’에 이어 ‘체력 바가 지금 누구의 변경 알림을 받고 있는가?’입니다. A의 알림 등록을 해제하고 B에 등록한 뒤, B의 현재 체력을 한 번 읽어 표시합니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/object-pointers-in-unreal-engine">Epic · Object Pointers</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/game-mode-and-game-state-in-unreal-engine">Epic · Game Mode and Game State</a></p>
+<h2 id="2">2. 상태 기계와 불변조건 · 두 플레이어가 같은 코어를 확보하면?<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>두 사람이 코어 A를 동시에 밟아도 확보 개수는 하나만 올라가야 합니다. 이처럼 입력이 어떤 순서로 들어오든 지켜야 하는 규칙을 <strong>불변조건</strong>이라고 합니다. 이 미션에는 두 가지가 더 있습니다. 진행 중일 때만 코어를 확보할 수 있고, 한 판에서 완료 상태로 넘어가는 일은 한 번뿐입니다.</p>
+<p>아래 함수는 서버가 플레이어의 거리와 권한, 코어의 유효성을 확인한 뒤 게임 스레드에서 호출합니다. <code>Captured</code>는 이미 확보한 코어 ID의 집합입니다. 미션 시작 전에 목표 개수(<code>RequiredCount</code>)가 양수인지 검사하고, 새 판을 시작할 때 집합과 미션 단계를 함께 초기화합니다.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ECaptureResult</span><span class="w"> </span><span class="nf">FMissionProgress::Capture</span><span class="p">(</span><span class="n">FName</span><span class="w"> </span><span class="n">coreId</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Phase</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EPhase</span><span class="o">::</span><span class="n">Active</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">Captured</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">coreId</span><span class="p">))</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ECaptureResult</span><span class="o">::</span><span class="n">Ignored</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">Captured</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">coreId</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Captured</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">RequiredCount</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ECaptureResult</span><span class="o">::</span><span class="n">Progressed</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">Phase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EPhase</span><span class="o">::</span><span class="n">Completed</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ECaptureResult</span><span class="o">::</span><span class="n">Completed</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>코드를 따라가 봅시다.</strong> 목표가 두 개일 때 A, A, B, B 순서로 입력해 보세요.</p>
+<table>
+<thead>
+<tr>
+<th>입력</th>
+<th>결과</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>첫 번째 A</td>
+<td><code>Progressed</code></td>
+<td>하나를 확보했고 목표까지 한 개가 남았습니다.</td>
+</tr>
+<tr>
+<td>두 번째 A</td>
+<td><code>Ignored</code></td>
+<td>이미 집합에 있는 코어입니다.</td>
+</tr>
+<tr>
+<td>첫 번째 B</td>
+<td><code>Completed</code></td>
+<td>서로 다른 코어 두 개를 확보했습니다.</td>
+</tr>
+<tr>
+<td>두 번째 B</td>
+<td><code>Ignored</code></td>
+<td>미션이 이미 끝났습니다.</td>
+</tr>
+</tbody>
+</table>
+<p>세 가지 결과를 구분하면 호출한 쪽에서 진행 표시와 완료 보상을 따로 처리할 수 있습니다. 이 함수만으로 서버 재시작 뒤의 중복 지급까지 막을 수 있을까요? 그 문제는 5장에서 살펴봅니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/game-mode-and-game-state-in-unreal-engine">Epic · 게임 규칙과 공유 상태</a></p>
+<h2 id="3">3. 복제와 시간 · 완료 직후 들어온 사람은 무엇을 알아야 하는가?<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>플레이어가 ‘코어를 확보하겠다’고 보내는 것은 <strong>명령</strong>입니다. 서버가 판정한 ‘현재 2개 중 2개 확보’는 <strong>상태</strong>이고, 마지막 코어를 확보한 순간은 <strong>이벤트</strong>입니다. 중간에 합류한 사람도 알아야 하는 정보는 현재 상태로 남겨야 합니다. 이미 접속해 있던 사람에게 보낸 <code>Reliable RPC</code>를 나중에 들어온 사람이 다시 받아 보지는 않습니다.</p>
+<p>언리얼이 서버의 값을 클라이언트에 전달하는 과정을 <strong>복제</strong>라고 합니다. 서로 다른 속성의 복제 알림 함수(<code>OnRep</code>)가 내가 기대한 순서로 실행된다고 가정하면 화면에 이전 목표와 새 진행도가 섞일 수 있습니다. 함께 읽을 미션 단계와 코어 개수를 한 구조체에 담으면 이 문제를 줄일 수 있습니다. 다른 액터의 준비 시점은 별도로 확인해야 합니다.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>의사코드 · 로컬 HUD와 모델이 모두 준비되는 시점에 실행
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>기존 구독 해제 → 새 모델 변경 알림 구독 → Render(모델의 현재 스냅샷)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>상태가 바뀌면 Render(새 스냅샷)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>HUD 비활성화 또는 대상 교체 시 기존 구독 해제
+</span></code></pre></div>
+<p>여기서 <strong>스냅샷</strong>은 화면을 그리는 데 필요한 현재 값의 묶음입니다. HUD가 늦게 열렸다면 스냅샷을 한 번 읽는 것만으로 2/2를 표시할 수 있습니다. 반대로 HUD가 먼저 열렸다면 모델이 준비되는 시점에 연결해야 합니다.</p>
+<p><strong>확인 문제</strong>　옵션을 닫을 때마다 미션 완료음이 다시 들립니다. <code>Render</code> 안에서 완료음을 재생하고 있지 않은지 확인해 보세요. 화면은 같은 값으로 여러 번 그릴 수 있지만, 소리는 완료 순간에 한 번 들려야 합니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/replicated-object-execution-order-in-unreal-engine">Epic · Replicated Object Execution Order</a></p>
+<h2 id="4-1000">4. 비용 모델과 측정 · 적 1,000마리의 표적 탐색을 최적화해야 할까?<a class="headerlink" href="#4-1000" title="Permanent link">&para;</a></h2>
+<p>적 1,000마리가 매 프레임 플레이어 네 명과의 거리를 각각 구한다면 거리 계산은 4,000번입니다. 그런데 실제로 시간이 오래 걸리는 부분은 그다음에 수행하는 시야 검사일 수도 있습니다. 거리 계산과 시야 검사 시간을 나눠 재야 어느 쪽부터 고칠지 알 수 있습니다.</p>
+<p>위치처럼 함께 읽는 값을 메모리에 연속해서 배치하면 CPU가 가까운 데이터를 다시 활용하기 쉽습니다. 이를 <strong>데이터 지역성</strong>이라고 합니다. 대신 적을 제거하거나 옮길 때 저장 위치와 개체 ID의 대응을 유지해야 합니다.</p>
+<p>60fps를 유지하려면 한 프레임에 약 16.67ms를 쓸 수 있습니다. 게임 스레드가 11ms, GPU가 19ms를 썼다고 해서 한 프레임이 곧바로 30ms가 되지는 않습니다. CPU와 GPU가 서로 다른 프레임을 겹쳐 처리할 수 있기 때문입니다.</p>
+<p>같은 빌드에서 카메라 위치와 적 수를 고정하고 Unreal Insights로 실행 기록을 비교하세요. 평균뿐 아니라 <strong>p95 프레임 시간</strong>도 봅니다. 이는 프레임 시간을 짧은 순서로 늘어놓았을 때 약 95% 지점의 값입니다. 처음 에셋을 불러올 때 한 번 크게 끊기는 현상은 별도로 살펴야 합니다. 거리 검사 비용이 절반으로 줄어도 GPU가 계속 19ms를 쓴다면 최종 프레임 시간의 개선은 작을 수 있습니다.</p>
+<p><a href="https://gameprogrammingpatterns.com/data-locality.html">Robert Nystrom · Data Locality</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-insights-in-unreal-engine">Epic · Unreal Insights</a></p>
+<h2 id="5">5. 멱등성과 영속성 · 구매 성공 직후 응답이 사라지면?<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>상점에서 스킨을 샀는데 응답이 오기 전에 연결이 끊겼습니다. 플레이어는 실패했다고 생각하지만 서버에는 이미 스킨이 지급됐을 수 있습니다. 같은 구매 요청을 다시 보내도 잔액과 아이템 수량이 한 번 구매했을 때와 같게 유지되는 성질을 <strong>멱등성</strong>이라고 합니다.</p>
+<p>여기서 상품 ID만 비교하면 같은 스킨을 새로 구매한 경우와 이전 요청을 재전송한 경우를 구분할 수 없습니다. 그래서 한 번의 구매 의도마다 요청 ID를 부여하고, 재전송할 때는 그 ID를 그대로 사용합니다.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>서버 의사코드 · 단일 트랜잭션 저장소 가정
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>(계정 ID, 요청 ID)의 유일성 제약으로 동시 요청을 조정
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>기존 완료 요청이면 원래 상품·수량의 일치를 확인하고 저장된 결과 반환
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>새 요청이면 서버 가격·잔액·재고 검증
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>같은 트랜잭션에서 차감 + 지급 + 처리 결과 기록
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>커밋 후 클라이언트에 결과 응답
+</span></code></pre></div>
+<p>차감·지급·결과 기록을 <strong>하나의 트랜잭션</strong>으로 묶는다는 말은 세 변경을 모두 확정하거나 모두 되돌린다는 뜻입니다. 구매 버튼을 잠그면 연타는 줄일 수 있지만 재접속 뒤 같은 요청이 다시 들어오는 상황은 여전히 남습니다.</p>
+<p><strong>더 생각해 보기</strong>　차감과 지급을 서로 다른 서비스가 맡는다면 위 예시의 가정이 깨집니다. 어디까지 처리했는지 남기고, 각 단계에서 같은 요청이 다시 들어왔을 때와 한쪽만 성공했을 때의 처리 방법을 정해야 합니다.</p>
+<p><a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">AWS Builders’ Library · 안전한 재시도</a></p>
+<h2 id="6-b-a">6. 데이터 주도 설계와 비동기 처리 · B 카드에 A 아이콘이 뜨는 이유는?<a class="headerlink" href="#6-b-a" title="Permanent link">&para;</a></h2>
+<p>기획자가 미션 목표를 코어 세 개에서 두 개로 바꿉니다. 이때 위젯 코드까지 고쳐야 할까요? 목표 개수와 안내 문구는 <strong>미션 정의</strong>, 이번 판에서 확보한 코어 목록은 <strong>진행 상태</strong>, HUD의 ‘1/2 확보’는 <strong>표시값</strong>으로 나누어 봅시다. 그러면 기획자는 정의만 고치고 화면은 바뀐 값에서 문구를 만들 수 있습니다. 미션 ID는 번역해도 변하지 않는 값으로 정합니다. 목표가 0이거나 맵에 배치된 코어 수보다 많으면 시작 전에 알려 줍니다.</p>
+<p><strong>아이콘이 뒤바뀌는 과정을 따라가 봅시다.</strong></p>
+<ol>
+<li>목록의 첫 카드가 아이템 A의 아이콘을 요청합니다. 로딩이 끝날 때까지 화면은 다른 작업을 계속합니다. 이것이 비동기 로딩입니다.</li>
+<li>플레이어가 스크롤합니다. 목록은 같은 카드 위젯을 아이템 B에 재사용하고 B의 아이콘을 요청합니다.</li>
+<li>B의 아이콘이 먼저 도착합니다. 뒤늦게 도착한 A의 결과까지 적용하면 B 카드에 A가 보입니다.</li>
+</ol>
+<p>카드에 새 아이템을 연결할 때마다 번호를 올리고, 로딩 완료 시 요청 당시 번호와 현재 번호가 일치하는지 검사합니다. 위젯이 아직 유효한지도 함께 확인합니다. 카드를 닫을 때도 이전 요청을 무효화합니다. 에디터에서는 보이는데 패키지 빌드에서만 아이콘이 항상 비어 있다면, 에셋이 배포용 데이터에 포함됐는지도 확인하세요.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/asset-management-in-unreal-engine">Epic · Asset Management</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/object-pointers-in-unreal-engine">Epic · Object Pointers</a></p>
+<h1 id="2-project-zeta">2부 · Project ZETA 콘텐츠 클라이언트 공고 집중 과정<a class="headerlink" href="#2-project-zeta" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>공고상 구분</th>
+<th>요구 역량</th>
+<th>연결할 장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>담당 업무</td>
+<td>UMG, 공용 위젯, 미션·상점·전적·설정</td>
+<td>5~8</td>
+</tr>
+<tr>
+<td>담당 업무</td>
+<td>게임패드 포커스와 내비게이션</td>
+<td>8</td>
+</tr>
+<tr>
+<td>담당 업무</td>
+<td>게임 상태 전환, 보스·핑·관전·리플레이·튜토리얼</td>
+<td>2~3, 9</td>
+</tr>
+<tr>
+<td>지원 자격</td>
+<td>UE C++, 설계 이유 설명, 문제 추적과 협업</td>
+<td>1~3, 10</td>
+</tr>
+<tr>
+<td>우대</td>
+<td>CommonUI·MVVM, 라이브 콘텐츠, AI 결과 검증</td>
+<td>5~8, 10</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://zighang.com/recruitment/b1424070-2121-4fdf-a38c-03436270fb01">공고 근거 · 직행 재게시본</a></p>
+<h2 id="7-umgmvvm-hp">7. UMG·MVVM · HP 한 칸이 변하면 어디까지 갱신해야 하는가?<a class="headerlink" href="#7-umgmvvm-hp" title="Permanent link">&para;</a></h2>
+<p>체력 바를 예로 들어 MVVM의 역할을 나눠 봅시다. <strong>모델(Model)</strong>은 현재 체력과 최대 체력을 보관합니다. <strong>뷰모델(ViewModel)</strong>은 두 값으로 막대를 얼마나 채울지 계산합니다. <strong>뷰(View)</strong>는 그 비율만큼 막대를 그립니다. 플레이어가 회복 버튼을 누르면 게임 규칙이 회복량을 확정한 다음 화면이 갱신됩니다.</p>
+<p>UMG에서 매 프레임 값이 바뀌었는지 조회하는 방식과, 값이 바뀐 순간에만 변경을 알리는 방식은 비용이 다릅니다. UE의 <code>FieldNotify</code>는 이런 변경을 구독자에게 알릴 때 사용합니다. 아래 함수는 뷰모델에 들어갈 계산만 뽑은 예입니다.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// C++17 계산부. &lt;algorithm&gt; 필요. 최대 HP가 0이면 빈 막대로 표시하는 정책.</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">float</span><span class="w"> </span><span class="nf">HealthFraction</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">maximum</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">maximum</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">maximum</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>현재 체력이 50이고 최대 체력이 100이면 함수는 0.5를 반환합니다. 버프로 최대 체력만 200이 되면 반환값은 0.25입니다. 현재 체력 변경만 구독한 위젯은 여전히 절반이 찬 막대를 보여 줍니다. <strong>계산 결과에 영향을 주는 두 값 모두</strong> 갱신의 계기가 되어야 합니다.</p>
+<p>상점 카드와 미션 카드를 함께 만들 때는 선택 테두리, 잠금 표시, 로딩 표시를 공용 위젯에 둘 수 있습니다. 구매 가능 여부는 상점 모델이, 목표 달성 여부는 미션 모델이 정합니다. 고정 조준점처럼 표시할 값이 거의 없는 위젯은 별도 뷰모델을 두는 이득이 작습니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/umg-viewmodel-for-unreal-engine">Epic · UMG Viewmodel</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/optimization-guidelines-for-umg-in-unreal-engine">Epic · UMG 최적화</a></p>
+<h2 id="8">8. 입력 라우팅과 설정 · 모달을 닫았는데 총도 발사된 이유는?<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>패드에서 확인 버튼을 눌러 설정 창을 닫았는데, 게임으로 돌아오자마자 총이 발사됩니다. 원인을 찾으려면 버튼을 누른 순간과 뗀 순간을 나누어 보세요. 창이 닫히면서 뒤따르는 입력을 게임 화면이 받았을 수 있습니다.</p>
+<p><strong>입력 라우팅</strong>은 버튼 입력을 어느 화면이나 기능에 전달할지 정하는 과정입니다. <strong>포커스</strong>는 그 화면 안에서 현재 조작할 항목을 가리킵니다. CommonUI에서는 어느 화면이 활성 상태인지, 어떤 자식 위젯에 포커스가 있는지, 누가 입력을 처리했는지를 차례로 확인합니다.</p>
+<table>
+<thead>
+<tr>
+<th>전환</th>
+<th>기대 동작</th>
+<th>실패 진단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>패드로 목록 → 상세</td>
+<td>사용 가능한 첫 버튼에 포커스</td>
+<td>숨겨진 배경 목록이 입력을 소비하는지 확인</td>
+</tr>
+<tr>
+<td>상세 → 목록</td>
+<td>원래 카드로 복귀, 삭제됐다면 인접 유효 항목 선택</td>
+<td>복귀 대상을 위젯 주소로만 기억했는지 확인</td>
+</tr>
+<tr>
+<td>마우스로 열고 패드로 탐색</td>
+<td>패드 아이콘과 실제 포커스 모두 유효</td>
+<td>장치 인식과 포커스 배정을 각각 확인</td>
+</tr>
+<tr>
+<td>설정 → 취소</td>
+<td>초안 폐기, 미리 적용한 음량 복구</td>
+<td>편집값·현재 적용값·저장값이 섞였는지 확인</td>
+</tr>
+</tbody>
+</table>
+<p>설정의 ‘취소’를 구현할 때는 세 값을 나눠 생각하면 편합니다. 슬라이더로 편집 중인 음량, 스피커에서 지금 들리는 음량, 다음 실행에도 사용할 저장값입니다. 미리 듣기를 지원한다면 취소할 때 슬라이더와 실제 음량을 모두 되돌려야 합니다.</p>
+<p>전적 화면에서도 값의 의미를 먼저 정합니다. ‘부활 횟수’ 항목을 이번 패치에 추가했다면 이전 경기 기록에는 이 값이 없습니다. 이를 모두 0회로 표시하면 실제로 한 번도 부활하지 않은 경기와 섞여 평균이 달라집니다. 이전 기록에 쓸 표시와 집계 기준을 함께 정합니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/commonui-input-technical-guide-for-unreal-engine">Epic · CommonUI 입력 기술 가이드</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-quickstart-guide-for-unreal-engine">Epic · CommonUI 시작 가이드</a></p>
+<h2 id="9">9. 인게임 시스템 · 같은 장면을 누구의 시간에서 보는가?<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>한 팀원이 쓰러진 장면을 떠올려 보세요. 관전자는 살아 있는 동료가 지금 보는 장면을 보고 싶습니다. 리플레이를 돌려 보는 사람은 30초 전 그 순간의 장면을 원합니다. 둘 다 다른 플레이어를 화면에 보여 주지만, 읽어 와야 할 데이터의 시점이 다릅니다.</p>
+<table>
+<thead>
+<tr>
+<th>시스템</th>
+<th>이론</th>
+<th>게임에서 답할 문제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>관전</td>
+<td>플레이어 신원과 Pawn 수명 분리</td>
+<td>관전 대상이 이탈하면 누구에게 전환하며, 이전 HP 구독은 언제 정리하는가?</td>
+</tr>
+<tr>
+<td>리플레이</td>
+<td>기록된 상태를 재생 시간축에서 복원</td>
+<td>30초로 탐색해 당시 점수판을 복원하면서 실제 계정 보상 재지급을 어떻게 방지하는가?</td>
+</tr>
+<tr>
+<td>팀 핑</td>
+<td>발신 권한·공간 기준·만료 시각</td>
+<td>움직이는 적이 사라지면 마지막 위치에 남길까? 늦게 받은 핑의 잔여 시간은 어느 시계로 계산할까?</td>
+</tr>
+<tr>
+<td>튜토리얼</td>
+<td>안내 노출 조건과 완료 조건 분리</td>
+<td>재장전을 먼저 한 사용자가 나중에 안내를 받으면 소급 완료할까?</td>
+</tr>
+<tr>
+<td>보스</td>
+<td>단계 전이와 일회성 진입 효과 분리</td>
+<td>HP가 75%에서 35%로 떨어지면 중간 단계를 건너뛸까? 중간 참가자에게 어떤 연출을 보일까?</td>
+</tr>
+</tbody>
+</table>
+<p>관전 중에는 지금 진행 중인 경기에서 카메라가 따라갈 대상을 바꿉니다. 리플레이에서 30초 지점으로 이동하면 그 시각의 점수와 목표 진행도까지 화면에 다시 그려야 합니다. 점수판이 실시간 득점 알림만 받아 숫자를 올리는 구조라면, 과거 시점으로 건너뛴 직후에는 점수를 복원할 수 없습니다. 언리얼의 <code>DemoNetDriver</code>가 기록하는 데이터와 클라이언트가 화면에서만 만든 표시를 구분해 보세요.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/using-the-replay-system-in-unreal-engine">Epic · Replay System</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/replicated-object-execution-order-in-unreal-engine">Epic · 복제 실행 순서</a></p>
+<h2 id="10-ai">10. 디버깅·협업·AI 검증 · 결과 창을 세 번 열면 보상음이 세 번 난다<a class="headerlink" href="#10-ai" title="Permanent link">&para;</a></h2>
+<p>결과 창을 세 번 열었다 닫은 뒤 코어를 확보했더니 완료음이 세 번 들립니다. 가능한 원인은 여러 가지입니다. 서버가 보상을 세 번 지급했을 수도 있고, 같은 위젯이 변경 알림을 세 번 등록했을 수도 있고, 소리 재생 코드가 반복됐을 수도 있습니다.</p>
+<p>같은 미션 ID를 기준으로 서버의 지급 기록, 클라이언트의 상태 변경 통지 횟수, 위젯의 콜백 호출 횟수를 비교하세요. 결과가 각각 1회, 1회, 3회라면 통지 한 건을 어떤 위젯들이 받았는지부터 좁혀 갑니다. AI가 ‘약한 참조를 썼으니 안전하다’고 설명해도, 살아 있는 위젯이 같은 알림을 여러 번 등록한 경우까지 설명할 수 있는지 확인해야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th>검증 범위</th>
+<th>시험</th>
+<th>잡을 수 있는 오류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>규칙 단위</td>
+<td>A,A,B,B에서 완료 전이 횟수 확인</td>
+<td>중복 집계</td>
+</tr>
+<tr>
+<td>UI 통합</td>
+<td>열기·닫기 3회 뒤 모델 변경 1회</td>
+<td>콜백 누적</td>
+</tr>
+<tr>
+<td>패키지 2인</td>
+<td>결과 전환 중 합류하고 패드로 복귀</td>
+<td>초기 상태 누락, 포커스 유실</td>
+</tr>
+<tr>
+<td>성능</td>
+<td>동일 부하에서 트레이스 전후 비교</td>
+<td>반복 레이아웃 비용, 첫 열기 hitch</td>
+</tr>
+</tbody>
+</table>
+<p>기획자와는 플레이어가 경험할 동작을 먼저 합의합니다. 예를 들어 ‘완료 순간에 접속해 있던 사람만 소리를 한 번 듣고, 뒤늦게 합류한 사람은 완료된 목표만 본다’고 정할 수 있습니다. 코드 리뷰에는 이 규칙을 어긴 재현 순서와 단계별 호출 횟수를 남겨 둡니다. 수정한 뒤 같은 순서로 다시 시험하면 의도한 부분이 고쳐졌는지 확인할 수 있습니다.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/automation-system-user-guide-in-unreal-engine">Epic · Automation System</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-insights-in-unreal-engine">Epic · Unreal Insights</a></p>
+<h1 id="ide">종합 평가 · IDE 없이 풀기<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h1>
+<p><strong>상황</strong> 마지막 코어 확보와 동시에 게스트가 들어왔다. 호스트는 완료음을 두 번 듣고 게스트는 0/2를 본다. 옵션을 닫자 게스트 화면이 2/2로 바뀐다.</p>
+<ol>
+<li>이 관찰로 실제 보상도 두 번 지급됐다고 결론낼 수 있는가?</li>
+<li>게스트 화면이 옵션을 닫고 회복됐다는 사실이 지지하는 가설은? 무엇을 기록하면 이 가설을 반박할 수 있는가?</li>
+<li>코어 판정, 공유 진행도, 패드 포커스, 영속 보상 각각을 누가 보유할지 정하라.</li>
+<li>기획자가 목표 수를 바꿀 때 검증할 두 경계값을 제시하라.</li>
+</ol>
+<p><strong>풀이</strong></p>
+<ol>
+<li>소리를 두 번 들었다는 사실만으로 지급 횟수는 알 수 없습니다. 서버 지급 기록과 클라이언트 소리 재생 기록을 각각 확인합니다.</li>
+<li>옵션을 닫을 때 화면이 최신 값을 다시 읽었을 수 있습니다. 닫기 직전 게스트 모델이 이미 2/2였다면 HUD의 초기 읽기나 알림 연결을 살핍니다. 모델도 0/2였다면 서버에서 클라이언트까지 값이 전달된 시점을 추적합니다.</li>
+<li>서버가 코어 확보를 판정하고, 복제되는 게임 상태가 공동 진행도를 보관합니다. 포커스는 각 플레이어의 UI가 관리하고, 계정 보상은 권한 있는 저장소에 남깁니다.</li>
+<li>목표가 0개일 때와 맵에 배치된 코어 수보다 많을 때를 확인합니다. 시작한 판에도 목표 변경을 적용할지는 기획과 별도로 정합니다.</li>
+</ol>
+<p><strong>권장 순서</strong> 이미 2인 패키지와 중도 합류를 검증한 경험을 살려 3 → 7 → 8 → 10장을 먼저 읽는다. 다음으로 1·2·5·6장에서 수명·규칙·데이터를 점검하고 4·9장과 종합 평가로 마무리한다. 더 읽을 때는 공개 게임 Lyra에서 화면 하나만 골라 생성 → 활성화 → 입력 → 비활성화 경로를 설명해 본다. 실제 API는 사용하는 프로젝트 버전의 헤더와 대조한다. <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/lyra-sample-game-in-unreal-engine">Epic · Lyra Sample Game</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
