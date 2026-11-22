@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../foundations/">
+        <link rel="prev" href="../simulation/">
       
       
         <link rel="next" href="../interface/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>2과 · 미션 규칙과 멀티플레이 - TechLib — 게임 프로그래밍 기술 위키</title>
+        <title>3과 · 게임 규칙과 데이터 설계 - TechLib — 게임 프로그래밍 기술 위키</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2" class="md-skip">
+        <a href="#3" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2과 · 미션 규칙과 멀티플레이
+              3과 · 게임 규칙과 데이터 설계
             
           </span>
         </div>
@@ -1810,6 +1810,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1881,7 +1885,35 @@
   <span class="md-ellipsis">
     
   
-    1과 · 객체와 데이터의 수명
+    1과 · 낯선 코드 읽기와 객체 수명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2과 · 시간·공간과 게임플레이 구현
   
 
     
@@ -1918,7 +1950,7 @@
   <span class="md-ellipsis">
     
   
-    2과 · 미션 규칙과 멀티플레이
+    3과 · 게임 규칙과 데이터 설계
   
 
     
@@ -1936,7 +1968,7 @@
   <span class="md-ellipsis">
     
   
-    2과 · 미션 규칙과 멀티플레이
+    3과 · 게임 규칙과 데이터 설계
   
 
     
@@ -1965,18 +1997,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        판정과 전달 나누기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        읽고 풀기
+        규칙을 재현할 수 있게 만들기
       
     </span>
   </a>
@@ -2006,7 +2027,7 @@
   <span class="md-ellipsis">
     
   
-    3과 · UI와 플레이어 입력
+    4과 · 입력·화면과 플레이 감각
   
 
     
@@ -2034,7 +2055,35 @@
   <span class="md-ellipsis">
     
   
-    4과 · 성능 측정과 오류 추적
+    5과 · 디버깅·성능 측정과 회귀 테스트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6과 · 협업·도구 제작과 출시 후 변경
   
 
     
@@ -2062,7 +2111,7 @@
   <span class="md-ellipsis">
     
   
-    UE5 콘텐츠 프로그래머 이론 학습서
+    선택 심화 · 협동 FPS 사례집
   
 
     
@@ -2113,18 +2162,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        판정과 전달 나누기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        읽고 풀기
+        규칙을 재현할 수 있게 만들기
       
     </span>
   </a>
@@ -2148,19 +2186,15 @@
 
 
 
-<h1 id="2">2과 · 미션 규칙과 멀티플레이<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
-<p>서버가 마지막 코어를 확보한 순간에 팀원이 접속합니다. 이미 끝난 미션의 진행도는 보여 주고, 완료음은 그 순간을 본 사람에게만 들려주고 싶습니다.</p>
-<h2 id="_1">판정과 전달 나누기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>코어 ID의 집합은 이번 판에서 확보한 대상을 기억합니다. 목표가 두 개일 때 A, A, B, B가 들어오면 확보 개수는 1, 1, 2, 2입니다. 새 참가자에게 필요한 값은 현재 개수와 미션 단계입니다. 과거 알림을 놓쳤더라도 이 두 값을 읽으면 목표를 표시할 수 있습니다.</p>
-<h2 id="_2">읽고 풀기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ol>
-<li><a href="../UE5_Content_Programming_Workbook/#2">코어 확보 함수</a>를 손으로 실행하고 진행·무시·완료가 언제 반환되는지 적습니다.</li>
-<li><a href="../UE5_Content_Programming_Workbook/#3">상태 복제와 중도 합류</a>와 <a href="../../09-network-sync/">네트워크 위키</a>를 읽습니다. 로컬 화면이 먼저 준비된 경우와 서버 값이 먼저 도착한 경우를 각각 그려 보세요.</li>
-<li><a href="../UE5_Content_Programming_Workbook/#5">상점 구매 재시도</a>와 <a href="../UE5_Content_Programming_Workbook/#9">관전·리플레이·핑·튜토리얼·보스</a>로 적용 범위를 넓힙니다.</li>
-</ol>
-<p><strong>확인 문제</strong>　미션 상태가 완료인데 화면을 다시 열 때마다 완료음이 들립니다. 보상도 중복 지급됐다고 할 수 있을까요?</p>
-<p><strong>풀이</strong>　지급과 소리는 다른 경로를 거칩니다. 서버 지급 기록부터 확인하세요. 화면은 현재 상태로 복원하고, 소리는 완료 전이가 일어난 순간에 재생하도록 구분합니다.</p>
-<p><a href="../">학습실 목차</a> · 다음 과정 <a href="../interface/">3과 · UI와 플레이어 입력</a></p>
+<h1 id="3">3과 · 게임 규칙과 데이터 설계<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>턴제 카드 게임에서 독 피해와 회복이 같은 턴에 예약됩니다. 체력 2인 캐릭터에게 피해 3, 회복 2를 적용하면 순서에 따라 생존 여부가 달라질 수 있습니다. 먼저 기획자와 “사망은 각 효과 직후 판정하는가, 턴이 끝날 때 판정하는가?”를 합의하세요. 그 답이 처리 순서와 테스트의 기대값이 됩니다.</p>
+<h2 id="_1">규칙을 재현할 수 있게 만들기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>카드 정의에는 비용과 효과 종류를 두고, 이번 경기 상태에는 소유자·현재 체력·예약된 효과를 둡니다. 같은 우선순위의 효과에는 생성 순번처럼 명시적인 순서를 부여합니다. 난수가 판정을 바꾼다면 입력과 시드뿐 아니라 처리 순서와 규칙 버전도 기록합니다. 시드 하나만 같아도 난수를 꺼내 쓰는 순서가 다르면 결과가 달라집니다.</p>
+<p><strong>설계 문제</strong>　같은 카드 사용 요청이 두 번 도착했습니다. 사용한 카드 종류만 보고 중복을 거르면 같은 카드를 정당하게 두 번 쓰는 플레이까지 막습니다. 한 행동의 식별자와 현재 턴을 검증하고, 처리된 요청의 결과를 재사용할 범위를 정하세요. 싱글플레이에서는 실행 취소와 저장 복원이, 온라인에서는 서버 권한과 재전송이 같은 설계를 다른 방향에서 시험합니다.</p>
+<p><strong>다른 장르로 옮겨 보기</strong>　건설 게임에서 건물을 철거한 뒤 옛 저장 파일을 불러옵니다. 건물 정의, 배치 인스턴스, 화면 표시 중 무엇을 저장해야 할까요? 새 버전에서 생산 시간이 바뀌면 진행 중인 건물에 언제 적용할지도 정합니다.</p>
+<p><strong>완료 기준</strong>　정상·중복·경계·복원 입력을 포함하는 상태 전이표를 작성하고, 그 표의 세 행 이상을 UI 없이 테스트합니다.</p>
+<p><a href="../../senior-knowledge/design-patterns/">게임 디자인 패턴</a> · <a href="../../09-network-sync/">네트워크 동기화</a> · <a href="../UE5_Content_Programming_Workbook/#2">FPS 적용 · 코어 확보</a> · <a href="../UE5_Content_Programming_Workbook/#5">상점 재시도</a></p>
+<p><a href="../">전체 과정</a> · <a href="../interface/">다음 과</a></p>
 
 
 

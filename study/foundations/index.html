@@ -16,7 +16,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../systems/">
+        <link rel="next" href="../simulation/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>1과 · 객체와 데이터의 수명 - TechLib — 게임 프로그래밍 기술 위키</title>
+        <title>1과 · 낯선 코드 읽기와 객체 수명 - TechLib — 게임 프로그래밍 기술 위키</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1과 · 객체와 데이터의 수명
+              1과 · 낯선 코드 읽기와 객체 수명
             
           </span>
         </div>
@@ -1810,6 +1810,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1890,7 +1894,7 @@
   <span class="md-ellipsis">
     
   
-    1과 · 객체와 데이터의 수명
+    1과 · 낯선 코드 읽기와 객체 수명
   
 
     
@@ -1908,7 +1912,7 @@
   <span class="md-ellipsis">
     
   
-    1과 · 객체와 데이터의 수명
+    1과 · 낯선 코드 읽기와 객체 수명
   
 
     
@@ -1937,18 +1941,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        값마다 사라질 시점을 정하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        읽고 풀기
+        무엇이 언제까지 살아야 할까?
       
     </span>
   </a>
@@ -1971,6 +1964,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2과 · 시간·공간과 게임플레이 구현
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../systems/" class="md-nav__link">
         
   
@@ -1978,7 +1999,7 @@
   <span class="md-ellipsis">
     
   
-    2과 · 미션 규칙과 멀티플레이
+    3과 · 게임 규칙과 데이터 설계
   
 
     
@@ -2006,7 +2027,7 @@
   <span class="md-ellipsis">
     
   
-    3과 · UI와 플레이어 입력
+    4과 · 입력·화면과 플레이 감각
   
 
     
@@ -2034,7 +2055,35 @@
   <span class="md-ellipsis">
     
   
-    4과 · 성능 측정과 오류 추적
+    5과 · 디버깅·성능 측정과 회귀 테스트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6과 · 협업·도구 제작과 출시 후 변경
   
 
     
@@ -2062,7 +2111,7 @@
   <span class="md-ellipsis">
     
   
-    UE5 콘텐츠 프로그래머 이론 학습서
+    선택 심화 · 협동 FPS 사례집
   
 
     
@@ -2113,18 +2162,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        값마다 사라질 시점을 정하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        읽고 풀기
+        무엇이 언제까지 살아야 할까?
       
     </span>
   </a>
@@ -2148,19 +2186,15 @@
 
 
 
-<h1 id="1">1과 · 객체와 데이터의 수명<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
-<p>팀원이 부활했습니다. 새 캐릭터의 체력은 가득 차야 하지만 이전까지 얻은 점수는 남아야 합니다. 두 값을 어디에 보관하면 이 규칙을 지킬 수 있을까요?</p>
-<h2 id="_1">값마다 사라질 시점을 정하기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>C++의 RAII는 객체의 생성과 소멸에 자원의 획득과 해제를 연결합니다. 언리얼에서 관전 HUD가 Pawn을 참조할 때는 다른 질문도 필요합니다. 화면이 그 Pawn을 계속 살려 둘 책임이 있을까요? 관전 대상은 바뀔 수 있으므로 약한 참조로 관찰하고, 대상을 교체할 때 이전 체력 알림을 해제합니다. 점수는 리스폰 뒤에도 남는 PlayerState에 둘 수 있습니다.</p>
-<h2 id="_2">읽고 풀기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ol>
-<li><a href="../stage1/#01-cpp-basics">C++ 기초 문제집</a>에서 객체 수명·이동 의미론·스마트 포인터를 풉니다. 가상 함수·템플릿·정의되지 않은 동작은 같은 탭의 필기 문제로 복습하세요.</li>
-<li><a href="../stage1/#02-unreal-core">언리얼 코어 문제집</a>에서 GC와 도달성, 포인터, Actor·Component 수명주기, 델리게이트를 연결해 읽습니다. 리플렉션과 UHT, 서브시스템, 모듈은 엔진 구조를 더 볼 때 참고하세요.</li>
-<li><a href="../UE5_Content_Programming_Workbook/#1_1">관전 대상 교체 예제</a>에서 이전 Pawn이 아직 살아 있는 경우를 확인합니다.</li>
-</ol>
-<p><strong>확인 문제</strong>　A에서 B로 관전 대상을 바꿨습니다. A는 아직 유효합니다. 널 검사만 추가하면 B의 체력이 보일까요?</p>
-<p><strong>풀이</strong>　포인터가 유효해도 화면이 A의 알림을 받고 있을 수 있습니다. A의 구독을 해제하고 B에 연결한 뒤 B의 현재 체력을 읽어야 합니다.</p>
-<p><a href="../">학습실 목차</a> · 다음 과정 <a href="../systems/">2과 · 미션 규칙과 멀티플레이</a></p>
+<h1 id="1">1과 · 낯선 코드 읽기와 객체 수명<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>새 팀에서 처음 받은 버그는 “파티원을 교체하면 이전 캐릭터의 버프 아이콘이 남는다”입니다. 먼저 디버거로 교체 입력부터 화면 갱신까지 따라가 보세요. 입력을 받은 객체, 파티 구성을 바꾼 객체, 알림을 보낸 객체, 화면을 그린 객체를 호출 순서대로 적습니다. 같은 객체가 여러 역할을 맡아도 괜찮습니다. 실제 코드에서 관찰한 경로가 출발점입니다.</p>
+<h2 id="_1">무엇이 언제까지 살아야 할까?<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>캐릭터 한 명의 버프는 캐릭터와 함께 사라질 수 있습니다. 파티 편성과 계정 업적은 더 오래 남습니다. C++의 RAII는 객체의 수명에 자원 반납을 묶는 방법이고, 언리얼의 GC는 도달 가능한 UObject를 추적합니다. 둘 중 어느 것도 “현재 선택된 캐릭터가 누구인가”를 대신 판정하지 않습니다. 포인터가 유효해도 이미 교체된 대상일 수 있습니다.</p>
+<p><strong>코드 읽기 문제</strong>　동료 목록을 순회하면서 탈퇴한 동료를 같은 배열에서 제거합니다. 다음 동료를 건너뛰거나, 재할당 뒤 낡은 주소를 읽을 수 있는 위치를 표시하세요. 제거가 순서를 보존해야 하는지에 따라 역순 제거, 제거 대상 수집, 조건 기반 일괄 제거 중 하나를 선택하고 이유를 적습니다.</p>
+<p><strong>다른 장르로 옮겨 보기</strong>　퍼즐 게임에서 실행 취소로 삭제된 블록이 복원됩니다. 과거 블록 주소를 저장했을 때와 안정적인 ID와 복원 데이터를 저장했을 때의 차이를 설명하세요.</p>
+<p><strong>완료 기준</strong>　본인이 작성하지 않은 기능 하나의 호출 경로를 파일·함수 단위로 기록하고, 대상 교체 전후에 끊어야 하는 참조나 구독 한 개를 디버거에서 확인합니다.</p>
+<p><a href="../stage1/#01-cpp-basics">기초 문제 · RAII·이동·가상 함수·템플릿·UB</a> · <a href="../stage1/#02-unreal-core">UE 실습 · GC·포인터·Actor·델리게이트</a> · <a href="../UE5_Content_Programming_Workbook/#1_1">FPS 적용 · 관전 대상 교체</a></p>
+<p><a href="../">전체 과정</a> · <a href="../simulation/">다음 과</a></p>
 
 
 
