@@ -1,11 +1,19 @@
 # 게임 프로그래밍 기술 위키
 
-게임 프로그래밍 기술 자료를 정리한 개인 기술 위키
+구현 중 만난 문제를 골라 관련 개념을 찾아보세요. C++ 필기 문제와 UE5 사례를 차례로 공부하려면 [학습실](study/index.md)에서 시작할 수 있습니다.
 
-!!! tip "학습 탭"
-    필기 테스트·기술 면접 대비 학습지는 위쪽의 **학습** 탭에 있습니다. → [학습 안내](study/index.md)
+## 게임에서 마주친 문제로 찾기
 
-## 섹션 안내
+| 궁금한 점 | 먼저 읽을 개념 | 게임에 적용하기 |
+|---|---|---|
+| 적이 많아지면 표적 탐색이 느려진다 | [공간 분할과 자료구조](01-data-structures/index.md), [캐시 메모리](03-cache-memory/index.md) | 탐색 후보 수와 메모리 접근 비용을 나눠 측정합니다. |
+| 화면에 보이는 물체를 줄였는데 프레임 시간이 그대로다 | [컬링과 선형대수](02-linear-algebra/index.md), [렌더링 병목](04-computer-architecture/index.md) | CPU와 GPU 중 어느 쪽이 프레임을 제한하는지 확인합니다. |
+| 레벨 경계에서 화면이 잠깐 멈춘다 | [스트리밍](08-memory-management/index.md), [동적 할당](06-memory-allocation/index.md), [프로파일링](10-profiling/index.md) | 최초 로딩과 반복되는 할당을 서로 다른 구간에서 비교합니다. |
+| 부하가 낮아도 프레임 간격이 불규칙하다 | [스레드 동기화](05-threading/index.md), [OS 스케줄링](07-os-scheduling/index.md) | 게임 스레드가 일하는 시간과 대기하는 시간을 구분합니다. |
+| 중간에 합류하면 미션 HUD가 비어 있다 | [네트워크 동기화](09-network-sync/index.md), [UE5 학습서 3·7장](study/UE5_Content_Programming_Workbook.md) | 현재 상태가 도착한 순간과 화면이 알림을 구독한 순간을 비교합니다. |
+| 결과 창을 열 때마다 보상음이 한 번씩 늘어난다 | [디버깅과 코드 리뷰](senior-knowledge/index.md), [UE5 학습서 10장](study/UE5_Content_Programming_Workbook.md) | 지급·통지·재생 횟수를 같은 미션 ID로 추적합니다. |
+
+## 분야별 기술 문서
 
 <div class="grid cards" markdown>
 
