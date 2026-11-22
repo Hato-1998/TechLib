@@ -1921,10 +1921,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#fps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        학습지 목록
+        협동 FPS 사례로 복습하기
       
     </span>
   </a>
@@ -1932,10 +1932,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        학습지 사용법
+        1단계 문제집 사용법
       
     </span>
   </a>
@@ -1954,7 +1954,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         공개본에 대해
@@ -1981,26 +1981,47 @@
 
 
 
-<h1 id="_1">학습<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>UE5 C++ 클라이언트 프로그래머의 필기 테스트와 기술 면접을 준비하는 학습지 모음입니다. 위키가 주제별로 찾아보는 자료라면, 학습지는 처음부터 끝까지 풀어 보며 공부하는 문제집에 가깝습니다.</p>
-<h2 id="_2">학습지 목록<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="_1">게임 프로그래머 학습실<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>공부할 목적에 따라 시작점을 고르세요.</p>
 <table>
 <thead>
 <tr>
-<th>단계</th>
-<th>범위</th>
-<th>학습지</th>
+<th>오늘의 목표</th>
+<th>읽을 곳</th>
+<th>읽은 뒤 해 볼 일</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1단계</td>
-<td>C++ 기초(RAII, 이동 의미론, vtable, 템플릿, 메모리·캐시, 스마트 포인터, UB, 자료구조·알고리즘)와 언리얼 코어(리플렉션, GC, 포인터 종류, Actor·Component 수명주기, 서브시스템, 델리게이트, 모듈)</td>
-<td><a href="stage1/" target="_blank">1단계 학습지 열기</a></td>
+<td>C++ 필기와 엔진 기초 복습</td>
+<td><a href="stage1/">1단계 문제집</a></td>
+<td>RAII와 UObject의 수명을 예제로 비교하고 오답을 다시 풉니다.</td>
+</tr>
+<tr>
+<td>UE5 콘텐츠 설계 공부</td>
+<td><a href="UE5_Content_Programming_Workbook/">협동 FPS로 배우는 콘텐츠 프로그래밍</a></td>
+<td>1~3장에서 코어 확보를 판정하는 주체와 중도 합류자에게 보여 줄 값을 구분합니다.</td>
+</tr>
+<tr>
+<td>클라이언트 직무 면접 준비</td>
+<td><a href="UE5_Content_Programming_Workbook/">콘텐츠 학습서 7~10장</a></td>
+<td>패드 포커스, 체력 바 갱신, 중복 콜백 문제를 재현 순서에 따라 설명합니다.</td>
+</tr>
+<tr>
+<td>특정 개념 찾아보기</td>
+<td><a href="../">게임 프로그래밍 기술 위키</a></td>
+<td>관련 개념을 읽고 현재 프로젝트에서 그 비용이나 호출 순서를 확인합니다.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">학습지 사용법<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="fps">협동 FPS 사례로 복습하기<a class="headerlink" href="#fps" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>설계</strong> · 1~3장과 5~6장을 읽고 코어 확보, 상태 복제, 보상 재시도를 종이에 그려 봅니다.</li>
+<li><strong>측정</strong> · 4장에서 적 1,000마리의 거리 검사 비용을 추정한 뒤 그 추정을 반박할 측정값을 정합니다.</li>
+<li><strong>화면과 입력</strong> · 7~9장에서 중도 합류한 플레이어의 HUD와 관전 화면이 어떻게 복구되는지 설명합니다.</li>
+<li><strong>검증</strong> · 10장과 종합 평가를 풀고 서버 지급 횟수, 클라이언트 통지 횟수, 위젯 호출 횟수를 구분합니다.</li>
+</ol>
+<h2 id="1">1단계 문제집 사용법<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>주제 하나를 60~90분 단위로 공부합니다.</p>
 <ol>
 <li><strong>읽기:</strong> "핵심"과 "흔한 함정"을 한 번 읽고 화면을 덮습니다.</li>
@@ -2015,7 +2036,7 @@
 <li>이 사이트에서는 페이지가 AI를 직접 부를 수 없습니다. 그래서 "질문 복사"를 누르고 Claude나 ChatGPT에 붙여 넣은 뒤, 받은 답을 패널에 붙여 넣어 대화에 남깁니다.</li>
 <li>대화, 체크 표시, 카드·문제 표시는 <strong>지금 쓰는 브라우저에만</strong> 저장됩니다. 다른 PC나 다른 브라우저로 옮기면 진행 상황이 따라오지 않습니다.</li>
 </ul>
-<h2 id="_4">공개본에 대해<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_2">공개본에 대해<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>이 학습지는 개인 노트에서 개인 프로젝트의 코드 위치와 검토 메모를 걸러 낸 공개본입니다. 엔진 동작의 근거는 UE 5.8 엔진 소스 위치(<code>Engine/Source/</code> 기준)로 남겨 두었습니다.</p>
 
 
