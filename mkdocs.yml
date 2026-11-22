@@ -116,9 +116,11 @@ nav:
           - Git & 협업 워크플로우: senior-knowledge/git-workflow.md
           - 최신 트렌드 2026: senior-knowledge/tech-trends-2026.md
   - 학습:
-      - 학습 순서: study/index.md
-      - 1과 · 객체와 데이터의 수명: study/foundations.md
-      - 2과 · 미션 규칙과 멀티플레이: study/systems.md
-      - 3과 · UI와 플레이어 입력: study/interface.md
-      - 4과 · 성능 측정과 오류 추적: study/diagnostics.md
-      - UE5 콘텐츠 프로그래머 이론 학습서: study/UE5_Content_Programming_Workbook.md
+      - 과정 안내: study/index.md
+      - 1과 · 낯선 코드 읽기와 객체 수명: study/foundations.md
+      - 2과 · 시간·공간과 게임플레이 구현: study/simulation.md
+      - 3과 · 게임 규칙과 데이터 설계: study/systems.md
+      - 4과 · 입력·화면과 플레이 감각: study/interface.md
+      - 5과 · 디버깅·성능 측정과 회귀 테스트: study/diagnostics.md
+      - 6과 · 협업·도구 제작과 출시 후 변경: study/delivery.md
+      - 선택 심화 · 협동 FPS 사례집: study/UE5_Content_Programming_Workbook.md
